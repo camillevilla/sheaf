@@ -3,3 +3,12 @@
 <p>You share libraries with the following users:</p>
 <!-- a .each of Users -->
 <!-- a bunch of links to all books owned by a particular user -->
+
+<% if session[:id] %>
+    <form action="/sessions" method="POST">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit" name="logout" value="Logout">Logout</button>
+    </form>
+<% else %>
+  <p>Please login</p>
+<% end %>

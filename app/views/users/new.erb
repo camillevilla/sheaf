@@ -1,13 +1,14 @@
 <h1>Registration</h1>
-  <form method="POST" action"/users/">
+  <form method="POST" action="/users">
+
     <label for="name">Name:</label>
-    <input type="text" name="name" id="name"> 
+    <input type="text" name="user[name]" id="name"> 
     
     <label for="email">Email:</label>
-    <input type="text" name="email" id="email"> 
+    <input type="text" name="user[email]" id="email"> 
     
     <label for="password_hash">Password:</label>
-    <input type="password" name="password_hash" id="password_hash"> 
+    <input type="password" name="user[password_hash]" id="password_hash"> 
     
     <label for="password_confirmation">Password_confirmation:</label>
     <input type="password" name="password_confirmation" id="password_confirmation"> 

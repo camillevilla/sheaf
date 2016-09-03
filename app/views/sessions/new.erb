@@ -1,10 +1,10 @@
 <h1>Login</h1>
 <form method="POST" action="/sessions">
   <label for="email">Email:</label>
-  <input type="text" name="email" id="email">
+  <input type="text" name="user[email]" id="email">
   
   <label for="password_hash">Password:</label>
-  <input type="password" name="password_hash" id="password_hash">
+  <input type="password" name="user[password_hash]" id="password_hash">
 
   <button type="submit">Submit</button>
 </form>
