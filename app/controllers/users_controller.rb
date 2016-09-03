@@ -15,7 +15,7 @@ post '/users' do
   # params[:user][:password_hash]
   if params[:password_confirmation] == params[:user][:password_hash]
     @user = User.new(params[:user])
-    @user.password = params[:password]
+    @user.password = params[:user][:password_hash]
     if @user.save
       session[:id] = @user.id
       # redirect to user profile after registration
