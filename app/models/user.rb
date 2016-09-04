@@ -1,6 +1,11 @@
 require 'bcrypt'
 
 class User < ActiveRecord::Base
+  has_many :borrows
+  has_many :copies
+  #define alias for borrowers
+  #define alias for owners
+
   include BCrypt
   # Remember to create a migration!
 
