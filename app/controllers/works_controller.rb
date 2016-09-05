@@ -1,5 +1,6 @@
 #all works in shared library
 get '/works' do
+  @works = Work.all
   erb :'/works/index'
 end
 
