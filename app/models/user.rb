@@ -2,9 +2,14 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
   has_many :borrows
-  has_many :copies
+  has_many :owns
   #define alias for borrowers
   #define alias for owners
+
+  #todo / should be able to make calls for:
+  #first level
+      # all copies owned by a user
+      # all copies borrowed by a user
 
   include BCrypt
   # Remember to create a migration!

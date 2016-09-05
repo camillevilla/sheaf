@@ -1,5 +1,7 @@
 # All users page
 get '/users' do
+  @users = User.all
+  @current_user = User.find(session[:id])
   erb :'/users/index'
 end
 
