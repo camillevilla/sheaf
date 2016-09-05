@@ -17,19 +17,19 @@
   </tr>
   <!-- for each copy of the book -->
   <% @copies.each do |copy| %>
-  <tr>
-    <td>x</td>
-    <td><%= @publications[0].publisher %></td>
-    <td>x</td>
-    <td>x</td>
-  </tr>
   <!-- create a new table row -->
   <tr>
-  <td>x</td>
-  <td><%= @publications[0].publisher %></td>
-  <td>x</td>
-  <td>x</td>
+    <!-- Owner -->
+    <td><%= copy.user.name %></td>
+    <!-- Publisher -->
+    <td></td>
+    <!-- Publication year -->
+    <td>x</td>
+    <!-- Borrowing status -->
+    <td>x</td>
   </tr>
+  <% end %>
+
 </table>
 
 <button>New copy</button>
