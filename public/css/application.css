@@ -1,3 +1,7 @@
+nav li {
+  display: inline-block;
+  padding: 10px;
+}
 
 table {
   width: 75%;
