@@ -4,7 +4,17 @@ get '/works' do
   erb :'/works/index'
 end
 
+#new works form
+get '/works/new' do 
+  erb :'/works/new'
+end
+
 #add a new work to the library
+post '/works' do
+  @work = Work.create(params[:work])
+  @id = Work.last.id
+  redirect "/works/#{@id}"
+end
 #eventually new work and new publication
 
 #Work details page

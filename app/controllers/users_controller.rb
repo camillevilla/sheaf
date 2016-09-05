@@ -12,9 +12,6 @@ end
 
 # Create new user
 post '/users' do
-  # p params
-  # params[:password_confirmation]
-  # params[:user][:password_hash]
   if params[:password_confirmation] == params[:user][:password_hash]
     @user = User.new(params[:user])
     @user.password = params[:user][:password_hash]
