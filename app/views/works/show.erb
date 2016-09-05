@@ -1,9 +1,36 @@
 <h1>An Awesome Book</h1>
 
 <h2>Book Details</h2>
+<ul>
+  <li><%= @work.title %></li>
+  <li><%= @work.author %></li>
+</ul>
 <!-- book metadata -->
 
 <h2>Copies</h2>
+<table>
+  <tr>
+    <th>Owner</th>
+    <th>Publisher</th>
+    <th>Publication Year</th>
+    <th>Status</th>
+  </tr>
+  <!-- for each copy of the book -->
+  <% @copies.each do |copy| %>
+  <!-- create a new table row -->
+  <tr>
+    <!-- Owner -->
+    <td><%= copy.user.name %></td>
+    <!-- Publisher -->
+    <td></td>
+    <!-- Publication year -->
+    <td>x</td>
+    <!-- Borrowing status -->
+    <td>x</td>
+  </tr>
+  <% end %>
+
+</table>
 
 <button>New copy</button>
 <button>Borrow</button>

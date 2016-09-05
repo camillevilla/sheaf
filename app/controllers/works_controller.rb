@@ -8,5 +8,9 @@ end
 
 #Work details page
 get '/works/:id' do
+  @work = Work.find(params[:id])
+  @publications = Work.find(params[:id]).publications
+  @copies = Work.find(params[:id]).owns
+  @owners = User.all
   erb :'/works/show'
 end

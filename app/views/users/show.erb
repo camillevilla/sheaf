@@ -1,3 +1,10 @@
-<h1>YOU!</h1>
+<h1>Hi, <%= @current_user.name %>!</h1>
 
 <p>Here's a bunch of stuff you can do</p>
+
+<h2>Books Borrowed</h2>
+<ul>
+  <% @borrowed_books.each do |book| %>
+    <li><%= book.own_id %></li>
+  <% end %>
+</ul>
