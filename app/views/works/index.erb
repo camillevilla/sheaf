@@ -1,4 +1,18 @@
-index.erb
-
 <h1>Shared Books</h1>
 <!-- all users' books -->
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Author</th>
+  </tr>
+  <% @works.each do |work| %>
+    <tr>
+      <td><a href="/works/<%= work.id %>"><%= work.title %></a></td>
+      <td><%= work.author %></td>
+    </tr>
+  <% end %>
+</table>
+
+<form method="get" action="/works/new">
+  <button type="submit">New Work</button>
+</form>
