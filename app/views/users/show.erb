@@ -3,8 +3,22 @@
 <p>Here's a bunch of stuff you can do</p>
 
 <h2>Books Borrowed</h2>
-<ul>
-  <% @borrowed_books.each do |book| %>
-    <li><%= book.own_id %></li>
+<table>
+  <tr>
+    <th>Owner</th>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Publisher</th>
+  </tr>
+  <% @current_user.borrows.each do |book| %>
+  <tr>
+    <!-- really ugly associations to be cleaned up later -->
+    <td><%= book.own.user.name %></td>
+    <td><%= book.own.publication.work.title %></td>
+    <td><%= book.own.publication.work.author %></td>
+    <td><%= book.own.publication.publisher %></td>
+  </tr>
   <% end %>
-</ul>
+</table>
+
+<h2>Books Lent

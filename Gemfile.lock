@@ -116,11 +116,15 @@ DEPENDENCIES
   rake
   rerun
   rspec (~> 3.0)
+  ruby_dep (~> 1.4.0)
   shotgun
   shoulda-matchers
   sinatra
   sinatra-contrib
   twilio-ruby (~> 4.11.1)
+
+RUBY VERSION
+   ruby 2.3.1p112
 
 BUNDLED WITH
    1.12.5
