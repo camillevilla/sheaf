@@ -32,3 +32,8 @@ post '/users' do
   end
 end
 
+get '/users/:id' do
+  @current_user = User.find(session[:id])
+  @borrowed_books = @current_user.borrows
+  erb :'/users/show'
+end

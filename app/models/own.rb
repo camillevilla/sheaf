@@ -3,5 +3,8 @@ class Own < ActiveRecord::Base
   belongs_to :user #define alias for owner_id
   belongs_to :publication 
   has_many :borrows
+  # has_one :work, through: :publications
 
+  # should be able to find all copies of all editions of a single work
+  # has_one :work, through: :publications
 end

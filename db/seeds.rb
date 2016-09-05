@@ -86,6 +86,16 @@
     publication_id: 1
     )
 
+  Own.create(
+    user_id: 2,
+    publication_id: 3
+    )
+
+  Own.create(
+    user_id: 3,
+    publication_id: 4
+    )
+
 
 # Borrows
   Borrow.create(
