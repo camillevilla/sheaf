@@ -14,6 +14,7 @@ gem 'rake'
 gem 'rerun'
 
 gem 'shotgun'
+gem 'bcrypt'
 
 gem 'twilio-ruby', '~> 4.11.1'
 

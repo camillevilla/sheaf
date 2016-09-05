@@ -1,0 +1,38 @@
+<h1><em><%= @work.title %></em> by <%= @work.author %></h1>
+
+
+<!-- book metadata -->
+
+<h2>Copies</h2>
+<table>
+  <tr>
+    <th>Owner</th>
+    <th>Publisher</th>
+    <th>Publication Year</th>
+    <th>ISBN</th>
+    <th>Status</th>
+  </tr>
+  <!-- for each copy of the book -->
+  <% @copies.each do |copy| %>
+  <!-- create a new table row -->
+  <tr>
+    <!-- Owner -->
+    <td><%= copy.user.name %></td>
+    <!-- Publisher -->
+    <td><%= copy.publication.publisher %></td>
+    <!-- Publication year -->
+    <td><%= copy.publication.publication_year %></td>
+    <!-- ISBN -->
+    <td><%= copy.publication.isbn13 %></td>
+    <!-- Borrowing status -->
+    <td>x</td>
+  </tr>
+  <% end %>
+
+</table>
+
+<form method="GET" action="/works/<%= @work.id %>/publications">
+<button>New copy</button>
+</form>
+<button>Borrow</button>
+<button>Lend</button>

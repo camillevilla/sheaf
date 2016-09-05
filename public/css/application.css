@@ -1,0 +1,14 @@
+nav li {
+  display: inline-block;
+  padding: 10px;
+}
+
+table {
+  width: 75%;
+}
+
+table td {
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+}
