@@ -26,11 +26,26 @@
 <body>
   <nav>
     <ul>
-      <li><a href="/users" <%= session[:id] %>">Home</a></li>
+      <li><a href="/users/<%= session[:id] %>">Home</a></li>
       <li><a href="/works">Books</a></li>
       <li><a href="/users">Friends</a></li>
-    </ul>
+      <% if session[:id] %>
+        <li>
+        <form action="/sessions" method="POST">
+        <input type="hidden" name="_method" value="delete">
+        <button type="submit" name="logout" value="Logout">Logout</button>
+        </form>
+        </li>
+      <% else %>
+        <li><form action="/sessions/new" method="GET">
+        <button type="submit">Login</button>
+        </form>
+        </li>
+        </ul>
   </nav>
+
+  
+<% end %>
   <%= yield %>
 </body>
 </html>

@@ -112,3 +112,8 @@
     user_id: 3,
     own_id: 4
     )
+
+  Borrow.create(
+    user_id: 2,
+    own_id: 3
+    )

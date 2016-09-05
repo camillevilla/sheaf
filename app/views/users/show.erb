@@ -1,7 +1,13 @@
 <h1>Hi, <%= @current_user.name %>!</h1>
 
 <p>Here's a bunch of stuff you can do</p>
+<ul>
+  <li><a href="/works">Browse the Library</a></li>
+  <li>Your Books</li>
+</ul>
 
+
+<!-- create partial for this later -->
 <h2>Books Borrowed</h2>
 <table>
   <tr>
@@ -10,7 +16,7 @@
     <th>Author</th>
     <th>Publisher</th>
   </tr>
-  <% @current_user.borrows.each do |book| %>
+  <% @borrowed_books.each do |book| %>
   <tr>
     <!-- really ugly associations to be cleaned up later -->
     <td><%= book.own.user.name %></td>
@@ -21,4 +27,21 @@
   <% end %>
 </table>
 
-<h2>Books Lent
+<h2>Books Lent</h2>
+<table>
+  <tr>
+    <th>Borrower</th>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Publisher</th>
+  </tr>
+  <% @lent_books.each do |book| %>
+  <tr>
+    <!-- really ugly associations to be cleaned up later -->
+    <td><%= book.user.name %></td>
+    <td><%= book.own.publication.work.title %></td>
+    <td><%= book.own.publication.work.author %></td>
+    <td><%= book.own.publication.publisher %></td>
+  </tr>
+  <% end %>
+</table>

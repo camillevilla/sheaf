@@ -32,5 +32,6 @@ end
 get '/users/:id' do
   @current_user = User.find(session[:id])
   @borrowed_books = @current_user.borrows
+  @lent_books = Borrow.where(own_id: @current_user.id )
   erb :'/users/show'
 end
