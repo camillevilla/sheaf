@@ -51,7 +51,7 @@ post '/send_sms' do
 
   client.messages.create(
     to: to,
-    from: ENV["TWILIO_PHONE_NUMBER"]',
+    from: ENV["TWILIO_PHONE_NUMBER"],
     body: message
     )
 
