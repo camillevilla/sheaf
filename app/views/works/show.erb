@@ -34,5 +34,7 @@
 <form method="GET" action="/works/<%= @work.id %>/publications">
 <button>New copy</button>
 </form>
-<button>Borrow</button>
+<form method="POST" action="/send_sms">
+  <button type="submit">Borrow</button>
+</form>
 <button>Lend</button>

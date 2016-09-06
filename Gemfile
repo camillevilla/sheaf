@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-ruby "2.3.1"
-
 # PostgreSQL driver
 gem 'pg'
 
@@ -18,6 +16,7 @@ gem 'rerun'
 gem 'shotgun'
 gem 'bcrypt'
 gem 'ruby_dep', '~> 1.4.0'
+gem 'dotenv'
 
 gem 'twilio-ruby', '~> 4.11.1'
 
