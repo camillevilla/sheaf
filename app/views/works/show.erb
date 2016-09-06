@@ -27,8 +27,7 @@
     <!-- Borrowing status -->
     <% if copy.user.id != @current_user.id %>
     <td>
-    <!-- <form method="GET" action="/owns/#{copy.id}>/borrows/new"> -->
-      <button type="submit">Borrow</button></form>
+      <%= erb :'borrows/_borrow', layout: false, locals: { copy: copy } %>
     </td>
     <% else %>
     <td>
@@ -43,7 +42,8 @@
 <form method="GET" action="/works/<%= @work.id %>/publications">
 <button>New copy</button>
 </form>
-<form method="POST" action="/send_sms">
+<!-- change Borrow button to show / hide form -->
+<!-- <form method="POST" action="/send_sms">
   <button type="submit">Borrow</button>
-</form>
-<button>Lend</button>
+</form> -->
+<!-- <button>Lend</button> -->
