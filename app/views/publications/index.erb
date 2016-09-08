@@ -19,7 +19,7 @@
     <!-- ISBN -->
     <td><%= publication.isbn13 %></td>
     <!-- New copy button -->
-    <td><form id="new-copy" method="POST" action="/works/<%= @work.id %>/publications/<%= publication.id %>/copies"><button type="submit">New Copy</button></form></td>
+    <td><form id="new-copy" method="POST" action="/works/<%= @work.id %>/publications/<%= publication.id %>/owns"><button type="submit">New Copy</button></form></td>
   </tr>
   <% end %>
 </table>
