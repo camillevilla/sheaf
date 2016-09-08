@@ -32,5 +32,27 @@ end
 get '/users/:id' do
   @current_user = User.find(session[:id])
   @borrowed_books = @current_user.borrows
+  @lent_books = Borrow.where(own_id: @current_user.id )
   erb :'/users/show'
+end
+
+# testing out Twilio stuff
+post '/send_sms' do
+  @user = User.first
+  to = @user.phone_number
+  message = @user.name
+  # to = params["to"]
+  # message = params["body"]
+
+  client = Twilio::REST::Client.new(
+    ENV["TWILIO_ACCOUNT_SID"],
+    ENV["TWILIO_AUTH_TOKEN"]
+    )
+
+  client.messages.create(
+    to: to,
+    from: ENV["TWILIO_PHONE_NUMBER"],
+    body: message
+    )
+
 end

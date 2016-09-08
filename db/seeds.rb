@@ -3,21 +3,21 @@
   User.create(
     name: "Marcie",
     email: "marcie@cat.com",
-    #add a phone number after implementing Twilio
+    phone_number: '+18186429958',
     password_hash: "$2a$10$ZMpmHp0PjPQMF4Ako8aVXeJp8I.2LKliM5JYVp.kU5fj2upgoLHq6"
     )
 
     User.create(
     name: "Tabby",
     email: "Tabby@cat.com",
-    #add a phone number after implementing Twilio
+    phone_number: '+18186429958',
     password_hash: "$2a$10$ZMpmHp0PjPQMF4Ako8aVXeJp8I.2LKliM5JYVp.kU5fj2upgoLHq6"
     )
 
     User.create(
     name: "Melville",
     email: "melville@cat.com",
-    #add a phone number after implementing Twilio
+    phone_number: '+18186429958',
     password_hash: "$2a$10$ZMpmHp0PjPQMF4Ako8aVXeJp8I.2LKliM5JYVp.kU5fj2upgoLHq6"
     )
 
@@ -111,4 +111,9 @@
   Borrow.create(
     user_id: 3,
     own_id: 4
+    )
+
+  Borrow.create(
+    user_id: 2,
+    own_id: 3
     )

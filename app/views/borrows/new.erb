@@ -1,0 +1,24 @@
+<h1>Send a Borrow Request to <%= @owner.name %></h1>
+
+<div id="request-info">
+Requesting:
+<p><em><%= @work.title %></em>, <%= @work.author %></p>
+<p><%= @publication.publisher %>, <%= @publication.publication_year %></p>
+</div>
+
+<form id="borrow-request-message" method="POST" action="/owns/<%= @copy.id %>/borrows/sms-request"> 
+  <p><label for="request">Edit Message:</label></p>
+  <p><textarea form="borrow-request-message" name="request" id="request" rows="10" cols="50">
+Hi, <%= @copy.user.name %>! Can I borrow one of your books?
+
+<%= @work.title %> by <%= @work.author %>
+
+<%= @publication.publisher %>, <%= @publication.publication_year %>
+
+
+Thanks,
+<%= @borrower.name %>
+  </textarea></p>
+  <!-- <input type="text" name="request"> -->
+  <p><button type="submit">Send</button></p>
+</form>

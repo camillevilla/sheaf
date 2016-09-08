@@ -27,6 +27,7 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     diff-lcs (1.2.5)
+    dotenv (2.1.1)
     factory_girl (4.7.0)
       activesupport (>= 3.0.0)
     faker (1.6.6)
@@ -109,6 +110,7 @@ DEPENDENCIES
   activesupport (~> 4.2.0)
   bcrypt
   capybara
+  dotenv
   factory_girl
   faker
   pg
@@ -116,11 +118,15 @@ DEPENDENCIES
   rake
   rerun
   rspec (~> 3.0)
+  ruby_dep (~> 1.4.0)
   shotgun
   shoulda-matchers
   sinatra
   sinatra-contrib
   twilio-ruby (~> 4.11.1)
+
+RUBY VERSION
+   ruby 2.3.1p112
 
 BUNDLED WITH
    1.12.5
