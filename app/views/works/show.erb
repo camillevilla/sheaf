@@ -10,7 +10,7 @@
     <th>Publisher</th>
     <th>Publication Year</th>
     <th>ISBN</th>
-    <th>Status</th>
+    <th>Borrow</th>
   </tr>
   <!-- for each copy of the book -->
   <% @copies.each do |copy| %>
@@ -25,7 +25,15 @@
     <!-- ISBN -->
     <td><%= copy.publication.isbn13 %></td>
     <!-- Borrowing status -->
-    <td>x</td>
+    <% if copy.user.id != @current_user.id %>
+    <td>
+      <%= erb :'borrows/_borrow', layout: false, locals: { copy: copy } %>
+    </td>
+    <% else %>
+    <td>
+      -
+    </td>
+    <% end %>
   </tr>
   <% end %>
 
@@ -34,5 +42,8 @@
 <form method="GET" action="/works/<%= @work.id %>/publications">
 <button>New copy</button>
 </form>
-<button>Borrow</button>
-<button>Lend</button>
+<!-- change Borrow button to show / hide form -->
+<!-- <form method="POST" action="/send_sms">
+  <button type="submit">Borrow</button>
+</form> -->
+<!-- <button>Lend</button> -->

@@ -23,6 +23,7 @@ get '/works/:id' do
   @publications = Work.find(params[:id]).publications
   @copies = Work.find(params[:id]).owns
   @owners = User.all
+  @current_user = User.find(session[:id])
   erb :'/works/show'
 end
 
