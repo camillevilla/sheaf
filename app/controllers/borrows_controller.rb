@@ -10,7 +10,7 @@ end
 post '/owns/:id/borrows/sms-request' do
   @owner = Own.find(params[:id]).user
   to = @owner.phone_number
-  @message = params[:request]
+  message = params[:request]
   # to = params["to"]
   # message = params["body"]
 
@@ -22,7 +22,7 @@ post '/owns/:id/borrows/sms-request' do
   client.messages.create(
     to: to,
     from: ENV["TWILIO_PHONE_NUMBER"],
-    body: @message
+    body: message
     )
 
   # eventually redirect to a nicer success page
