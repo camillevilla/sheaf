@@ -6,6 +6,7 @@
     <th>Publisher</th>
     <th>Publication Year</th>
     <th>ISBN</th>
+    <th>Format</th>
     <th>Status</th>
   </tr>
   <!-- for each copy of the book -->
@@ -18,6 +19,8 @@
     <td><%= publication.publication_year %></td>
     <!-- ISBN -->
     <td><%= publication.isbn13 %></td>
+    <!-- Format -->
+    <td><%= publication.format %></td>
     <!-- New copy button -->
     <td><form id="new-copy" method="POST" action="/works/<%= @work.id %>/publications/<%= publication.id %>/owns"><button type="submit">New Copy</button></form></td>
   </tr>

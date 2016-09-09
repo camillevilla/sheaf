@@ -10,6 +10,7 @@
     <th>Publisher</th>
     <th>Publication Year</th>
     <th>ISBN</th>
+    <th>Format</th>
     <th>Borrow</th>
   </tr>
   <!-- for each copy of the book -->
@@ -25,6 +26,8 @@
     <td><%= copy.publication.publication_year %></td>
     <!-- ISBN -->
     <td><%= copy.publication.isbn13 %></td>
+    <!-- Format -->
+    <td><%= copy.publication.format %></td>
     <!-- Borrowing status -->
     <% if copy.user.id != @current_user.id %>
     <td>
