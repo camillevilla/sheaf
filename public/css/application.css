@@ -31,3 +31,23 @@ th {
     margin-right: auto;
     width: 80%;
 }
+
+.big-ol-title {
+    font-size: 2.4em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 6em;
+    text-align: center;
+}
+
+#marcie {
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+#landing {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
