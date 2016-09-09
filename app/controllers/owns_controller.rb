@@ -7,3 +7,4 @@ post '/works/:work_id/publications/:publication_id/owns' do
   )
   redirect "/works/#{params[:work_id]}"
 end
+

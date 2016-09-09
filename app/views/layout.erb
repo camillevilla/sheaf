@@ -26,7 +26,7 @@
 <body>
   <nav>
     <ul class="navigation">
-      <li><a href="/users/<%= session[:id] %>">Home</a></li>
+      <li><a href="/users/<%= session[:id] %>" id="home">Home</a></li>
       <li><a href="/works">Books</a></li>
       <li><a href="/users">Friends</a></li>
       <% if session[:id] %>
