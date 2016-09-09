@@ -13,6 +13,7 @@
     <th>Borrow</th>
   </tr>
   <!-- for each copy of the book -->
+  <% if @copies.length > 0 %>
   <% @copies.each do |copy| %>
   <!-- create a new table row -->
   <tr>
@@ -36,7 +37,7 @@
     <% end %>
   </tr>
   <% end %>
-
+  <% end %>
 </table>
 
 <form method="GET" action="/works/<%= @work.id %>/publications">
