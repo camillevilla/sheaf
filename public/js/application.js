@@ -1,6 +1,7 @@
 $(document).ready(function() {
   booksBorrowedListener();
   booksLentListener();
+  newBookListener();
 });
 
 var booksBorrowedListener = function(){
@@ -34,6 +35,7 @@ var booksLentListener = function(){
   $("#books-lent-toggle").on("click", function(event){
     event.preventDefault();
 
+    //hide if clicked again
     if ($("#books-lent").length > 0){
       $("#books-lent").remove();
     }
@@ -55,4 +57,26 @@ var booksLentListener = function(){
       console.log(error)
     });
   }})
+}
+
+var newBookListener = function(){
+  $("#new-work-form").on("submit", function(event){
+    
+    event.preventDefault();
+    
+    var input = $("#new-work-form").serialize();
+    
+    $.ajax({
+      method: "POST",
+      url: "/works",
+      data: input
+    })
+    .done(function(response){
+      $("#new-work-form-container").append(response)
+    })
+    .fail(function(error){
+      console.log(error)
+    });
+    
+  })
 }
