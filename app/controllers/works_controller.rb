@@ -5,7 +5,7 @@ get '/works' do
 end
 
 # new works form
-get '/works/new' do 
+get '/works/new' do
   erb :'/works/new'
 end
 
@@ -13,7 +13,11 @@ end
 post '/works' do
   @work = Work.create(params[:work])
   @id = Work.last.id
-  redirect "/works/#{@id}"
+  if request.xhr?
+    erb :'publications/_publications_form', layout: false, locals: { work: @work }
+  else
+    # redirect "/works/#{@id}"
+  end
 end
 
 #Work details page
