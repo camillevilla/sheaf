@@ -2,11 +2,6 @@ h1, h2 {
   font-family: 'Merriweather', serif;
 }
 
-.navigation > li {
-  display: inline-block;
-  padding: 10px;
-}
-
 table {
   width: 75%;
 }
@@ -15,4 +10,24 @@ table td {
   margin: 10px;
   padding: 20px;
   text-align: center;
+}
+
+tr:nth-child(even) {background: WhiteSmoke}
+tr:nth-child(odd) {background: #FFF}
+
+th {
+  font-size: 1.2em;
+  border-bottom: 2px solid black;
+  padding:10px;
+}
+
+.navigation > li {
+  display: inline-block;
+  padding: 10px;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
 }
