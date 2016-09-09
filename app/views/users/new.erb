@@ -1,5 +1,6 @@
 <h1>Registration</h1>
   <form method="POST" action="/users">
+  <table>
 
     <label for="name">Name:</label>
     <input type="text" name="user[name]" id="name"> 
@@ -7,11 +8,14 @@
     <label for="email">Email:</label>
     <input type="text" name="user[email]" id="email"> 
     
+    <label for="phone_number">Phone number:</label>
+    <input type="text" name="user[phone_number]" id="phone_number"> 
+
     <label for="password_hash">Password:</label>
     <input type="password" name="user[password_hash]" id="password_hash"> 
     
-    <label for="password_confirmation">Password_confirmation:</label>
+    <label for="password_confirmation">Password Confirmation:</label>
     <input type="password" name="password_confirmation" id="password_confirmation"> 
-
+</table>
     <button type="submit">Submit</button>
   </form>
