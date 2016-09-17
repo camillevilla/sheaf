@@ -1,3 +1,24 @@
-# Sheaf
+# README
 
-Sheaf is for friends managing a shared library of print and digital books. Users can keep track of books borrowed and lent. 
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
