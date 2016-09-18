@@ -1,0 +1,8 @@
+<h2>Author</h2>
+<%= @author.name %>
+
+<h3>Works</h3>
+<ul>
+<% @author.works.each do |work| %>
+  <li><%= work.title %></li>
+<% end %>

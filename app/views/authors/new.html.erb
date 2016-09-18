@@ -1,0 +1,15 @@
+<h2>Author</h2>
+<%= form_for @author do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+  <h3>Work</h3>
+    <%= f.fields_for :works do |works_form| %>
+        <%= works_form.label :title %>
+        <%= works_form.text_field :title %>
+    <% end %>
+  <p>
+    <%= f.submit "Create New Author"%><br>
+  </p>
+<% end %>
