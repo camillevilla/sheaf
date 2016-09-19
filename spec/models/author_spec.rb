@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Author, type: :model do
 
+
   describe "attributes" do
     it "has a name" do 
       expect(build(:author).name).to eq "Toni Morrison"
@@ -10,6 +11,7 @@ RSpec.describe Author, type: :model do
 
   describe "associations" do
       it {should have_many(:works)}
+      it {should have_many(:editions).through(:works)}
   end
 
   describe "validations" do
