@@ -6,9 +6,34 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous" />
   </head>
 
   <body>
-    <%= yield %>
+  <nav class="navbar navbar-light bg-faded">
+    <ul class="nav navbar-nav">
+      <% if user_signed_in? %>
+        <!-- <li>
+          Logged in as <strong><%= current_user.email %></strong>.
+        </li> -->
+        <li class="nav-item">
+          <%= link_to 'Edit profile', edit_user_registration_path, :class => 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-link'  %>
+        </li>
+      <% else %>
+          <li class="nav-item">
+          <%= link_to "Sign up", new_user_registration_path, :class => 'nav-link'  %>
+          </li>
+          <li class="nav-item">
+          <%= link_to "Login", new_user_session_path, :class => 'nav-link'  %>
+          </li>
+        <% end %>
+      </ul>
+      </nav>
+    <div class="container">
+      <%= yield %>
+    <div class="container">
   </body>
 </html>
