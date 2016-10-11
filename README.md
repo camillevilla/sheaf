@@ -1,24 +1,12 @@
-# README
+# Sheaf
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Sheaf is an app for borrowing and lending books with friends. 
 
-Things you may want to cover:
+## Status
+- Currently rebuilding this project in Rails! The old Sinatra prototype can be found [on Heroku](https://sheaf-books.herokuapp.com/) and [GitHub](https://github.com/camillevilla/sheaf/tree/master).
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Features
+- [ ] Catalog books and add books by ISBN
+- [ ] Share your library with friends
+- [ ] Send a borrow request to friends via text or email
+- [ ] PDF / .mobi / .epub downloads
