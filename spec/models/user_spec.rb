@@ -6,14 +6,14 @@ RSpec.describe User, type: :model do
     it { should have_db_column(:name) }
     it { should have_db_column(:email) }
     it { should have_db_column(:phone) }
-    it { should have_db_column(:password) }
+    it { should have_db_column(:encrypted_password) }
   end
   
   describe "validations" do
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:email) }
     it { should validate_presence_of(:phone) }
-    it { should validate_presence_of(:password) }
+    it { should validate_presence_of(:encrypted_password) }
   end
 
   describe "associations" do 

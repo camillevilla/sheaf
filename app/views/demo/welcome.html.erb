@@ -1,0 +1,15 @@
+<h1>Sheaf</h1>
+
+<% if user_signed_in? %>
+Hi, <%= current_user.name %>! Here are some things you can do:
+<ul>
+  <li>Add a book to your library</li>
+  <li>See books you're borrowing</li>
+  <li>See books you're lending</li>
+</ul>
+
+<% else %>
+
+Sheaf is an app for borrowing and lending books with friends. 
+
+<% end %>
