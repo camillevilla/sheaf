@@ -1,0 +1,7 @@
+services:
+- postgresql
+before_script:
+- psql -c 'create database sheaf_test;' -U postgres
+language: ruby
+rvm:
+- 2.3.1
