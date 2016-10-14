@@ -1,0 +1,9 @@
+<h2>New Work</h2>
+
+<form id="new-work-form" method="POST" action="/works">
+  <%= render "authors/new"%> 
+  <p><input type="text" name="work[title]" placeholder="Title"></p>
+  <button class="btn" type="submit">Submit</button>
+</form>
+
+<%= link_to 'Back', works_path %>
