@@ -12,15 +12,15 @@ FactoryGirl.define do
     name "Alfred A. Knopf"
   end
 
-  factory :format do
-    kind "print"
-  end
+  # factory :format do
+  #   kind "print"
+  # end
 
   factory :edition do
     work
     publisher
     publication_year 1977
-  format
+    format_type "paperback"
   end
 
   factory :user, aliases: [:owner, :borrower] do
