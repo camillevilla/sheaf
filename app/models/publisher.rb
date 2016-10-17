@@ -3,5 +3,7 @@ class Publisher < ApplicationRecord
   has_many :works, through: :editions
   has_many :authors, through: :works
 
-  validates :name, presence: true
+  validates :name, 
+    presence: true,
+    uniqueness: true
 end

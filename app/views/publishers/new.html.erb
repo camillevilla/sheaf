@@ -1,0 +1,7 @@
+<h2>New Publisher</h2>
+<%= simple_form_for @publisher do |f| %>
+  <%= f.input :name %>
+  <%= f.button :submit %>
+<% end %>
+
+<%= link_to 'Back', publishers_path %>

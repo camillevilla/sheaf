@@ -1,0 +1,7 @@
+<h2>Works</h2>
+<ul>
+  <% @works.each do |work| %>
+  <!-- later add .each for books with multiple authors -->
+  <li><em><%= work.title %></em>, <%= link_to work.author.name, author_url(work.author) %> </li>
+  <% end %>
+</ul>

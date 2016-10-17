@@ -1,0 +1,11 @@
+<h2>Edition</h2>
+
+<form id="new-edition-form" method="POST" action="/editions">
+  <%= render "authors/new"%>
+  <%= render "works/new"%>
+  <%= render "publishers/new"%>
+  <%= render "editions/new"%>
+  <button class="btn" type="submit">Submit</button>
+</form>
+
+<%= link_to 'Back', editions_path %>

@@ -5,7 +5,7 @@ class AuthorsController < ApplicationController
 
   def new
     @author = Author.new
-    work = @author.works.build
+    # work = @author.works.build
   end
 
   def create
@@ -32,6 +32,6 @@ class AuthorsController < ApplicationController
   private
 
   def author_params
-    params.require(:author).permit(:name, works_attributes: [:title])
+    params.require(:author).permit(:name)
   end
 end

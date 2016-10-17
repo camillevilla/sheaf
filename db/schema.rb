@@ -33,12 +33,11 @@ ActiveRecord::Schema.define(version: 20161009210306) do
     t.integer  "work_id"
     t.integer  "publisher_id"
     t.integer  "publication_year"
-    t.integer  "format_id"
+    t.string   "format_type"
     t.string   "isbn10"
     t.string   "isbn13"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.index ["format_id"], name: "index_editions_on_format_id", using: :btree
     t.index ["publisher_id"], name: "index_editions_on_publisher_id", using: :btree
     t.index ["work_id"], name: "index_editions_on_work_id", using: :btree
   end
@@ -90,7 +89,6 @@ ActiveRecord::Schema.define(version: 20161009210306) do
 
   add_foreign_key "copies", "editions"
   add_foreign_key "copies", "users"
-  add_foreign_key "editions", "formats"
   add_foreign_key "editions", "publishers"
   add_foreign_key "editions", "works"
   add_foreign_key "loans", "copies"

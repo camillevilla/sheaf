@@ -1,0 +1,12 @@
+<h2>Add a Book</h2>
+
+<form id="new-copy-form" method="POST" action="/users/<%= current_user.id %>/copies">
+  <%= render "authors/new"%>
+  <%= render "works/new"%>
+  <%= render "publishers/new"%>
+  <%= render "editions/new"%>
+  <p><input type="date" name="copy[acquisition_date]"></p>
+  <button class="btn" type="submit">Submit</button>
+</form>
+
+<!-- link back to user's copies -->

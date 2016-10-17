@@ -3,13 +3,14 @@
 <% if user_signed_in? %>
 Hi, <%= current_user.name %>! Here are some things you can do:
 <ul>
-  <li>Add a book to your library</li>
-  <li>See books you're borrowing</li>
-  <li>See books you're lending</li>
+  <li><%= link_to 'Add a book to your library', new_user_copy_path(current_user) %></li>
+  <li><%= link_to 'Your library', user_copies_path(current_user) %></li>
+  <li>Books you're borrowing</li>
+  <li>Books you're lending</li>
 </ul>
 
 <% else %>
 
-Sheaf is an app for borrowing and lending books with friends. 
+Sheaf is an app for borrowing and lending books with friends.
 
 <% end %>

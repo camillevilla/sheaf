@@ -1,0 +1,10 @@
+<h2>Book Details</h2>
+<p>Owner: <%= @copy.owner.name %></p>
+<p><%= @edition.authors[0].name %></p>
+<p><%= @edition.work.title %></p>
+<p><%= @edition.publisher.name %></p>
+<p><%= @edition.publication_year %></p>
+<p><%= @edition.isbn13 %></p>
+
+
+<%= link_to "Back to #{@copy.owner.name}'s books", user_copies_path(@copy.owner) %>
