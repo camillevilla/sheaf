@@ -1,0 +1,23 @@
+<h1>Friend Requests</h1>
+<!-- create partials for friends page later -->
+<h2>Received Requests</h2>
+<% if @received_requests.length > 0 %>
+  <% @received_requests.each do |request| %>
+  <li><%= request.sender.name %> | <%= request.sender.email %> | <%= link_to 'Accept' %> | <%= link_to 'Reject' %></li>
+  <% end %>
+<% else %>
+  <p>No outstanding requests</p>
+<% end %>
+
+<h2>Sent Requests</h2>
+<% if @pending_requests.length > 0 %>
+  <% @pending_requests.each do |request| %>
+  <li><%= request.recipient.name %> | <%= request.recipient.email %></li>
+  <% end %>
+<% else %>
+  <p>No outstanding requests</p>
+<% end %>
+
+<%= link_to 'Add friends', new_friendrequest_path %>
+
+
