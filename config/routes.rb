@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :works
     resources :publishers
     resources :editions
+    resources :friendrequests
   end
   
   root "demo#welcome"

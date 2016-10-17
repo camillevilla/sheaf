@@ -19,6 +19,9 @@ RSpec.describe User, type: :model do
   describe "associations" do 
     it {should have_many(:owned_books).with_foreign_key('user_id').class_name('Copy')}
     # it {should have_many(:borrowed_books).with_foreign_key('user_id').class_name('Loan')}
+
+    it {should have_many(:sent_friendrequests).with_foreign_key('sender_id').class_name('Friendrequest')}
+    it {should have_many(:received_friendrequests).with_foreign_key('recipient_id').class_name('Friendrequest')}
   end
 
 end
