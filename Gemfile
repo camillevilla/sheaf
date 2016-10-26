@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'simple_form'
 gem 'devise'
+gem 'postmark-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -36,6 +37,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl_rails'
+  gem 'dotenv-rails'
 end
 
 group :test do
