@@ -12,44 +12,48 @@ class FriendrequestsController < ApplicationController
 
   def create
 
-    recipient = User.where(email: friendrequest_params[:recipient_id])[0]
+    @email = friendrequest_params[:recipient_id]
+    recipient = User.where(email: @email)[0]
 
-    @request = Friendrequest.new(friendrequest_params.merge(
-      recipient_id: recipient.id, 
-      sender_id: current_user.id,
-      status: 0)
-    )
-
-    # TODO:
-      # redirect to invitation page if user is not on Sheaf
-        #error message - "Your friend isn't on Sheaf yet! Send them an invitation?"
-      # figure out a delicate way to handle rejected requests
-
-    #prevent creating multiple requests to same user
-    if Friendrequest.where(
-      recipient_id: recipient.id, 
-      sender_id: current_user.id,
-      status: 0).empty? == false
-      redirect_to friendrequests_path
-      # error message - "You have already sent a request to user"
-    # prevent creating reciprocal pending requests
-    elsif Friendrequest.where(
-      recipient_id: current_user.id, 
-      sender_id: recipient.id,
-      status: 0).empty? == false
-      redirect_to friendrequests_path
-      # error message - "User has already sent you a request. Accept their invitation below:"
-    # prevent adding existing friends
-    elsif Friendrequest.where(
-      recipient_id: current_user.id, 
-      sender_id: recipient.id,
-      status: 1).empty? == false
-      redirect_to friendrequests_path
-      # error message - "You're already friends!"
-    elsif @request.save
+    # send email invitation
+    if recipient == nil 
+      InvitationMailer.join_sheaf(current_user, @email).deliver_now
       redirect_to friendrequests_path
     else
-      render :new
+
+      @request = Friendrequest.new(friendrequest_params.merge(
+        recipient_id: recipient.id, 
+        sender_id: current_user.id,
+        status: 0)
+      )
+
+      #prevent creating multiple requests to same user
+      if Friendrequest.where(
+        recipient_id: recipient.id, 
+        sender_id: current_user.id,
+        status: 0).empty? == false
+        redirect_to friendrequests_path
+        # error message - "You have already sent a request to user"
+      # prevent creating reciprocal pending requests
+      elsif Friendrequest.where(
+        recipient_id: current_user.id, 
+        sender_id: recipient.id,
+        status: 0).empty? == false
+        redirect_to friendrequests_path
+        # error message - "User has already sent you a request. Accept their invitation below:"
+      # prevent adding existing friends
+      elsif Friendrequest.where(
+        recipient_id: current_user.id, 
+        sender_id: recipient.id,
+        status: 1).empty? == false
+        redirect_to friendrequests_path
+        # error message - "You're already friends!"
+      elsif @request.save
+        redirect_to friendrequests_path
+      else
+        render :new
+      end
+
     end
   end
 
