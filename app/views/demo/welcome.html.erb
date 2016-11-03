@@ -5,6 +5,7 @@ Hi, <%= current_user.name %>! Here are some things you can do:
 <ul>
   <li><%= link_to 'Add a book to your library', new_user_copy_path(current_user) %></li>
   <li><%= link_to 'Your library', user_copies_path(current_user) %></li>
+  <li><%= link_to 'Your friends', user_friendships_path(current_user) %></li>
   <li><%= link_to 'Add friends', friendrequests_path %></li>
   <li>Books you're borrowing</li>
   <li>Books you're lending</li>
