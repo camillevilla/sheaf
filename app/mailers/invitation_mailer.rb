@@ -1,10 +1,12 @@
 class InvitationMailer < ApplicationMailer
-  def join_sheaf(user,recipient)
+
+  def join_sheaf(user, email)
     @user = user
     mail(
       :subject => 'Welcome to Sheaf Books',
-      :to      => recipient,
+      :to      => email,
       :from    => 'camille.villa@sheaf-books.com',
     )
   end
+
 end
