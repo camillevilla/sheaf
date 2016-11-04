@@ -58,6 +58,15 @@ class FriendrequestsController < ApplicationController
   end
 
   def update
+    @friendrequest = Friendrequest.find(params[:id])
+    @friendrequest.accept_request
+    redirect_to friendrequests_path
+  end
+
+  def destroy
+    @friendrequest = Friendrequest.find(params[:id])
+    @friendrequest.destroy
+    redirect_to friendrequests_path
   end
 
   private

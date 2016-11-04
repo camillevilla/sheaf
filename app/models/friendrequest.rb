@@ -4,12 +4,13 @@ class Friendrequest < ApplicationRecord
 
 
   def accept_request
-    if recipient_id == current_user.id
-    end
+      Friendship.create(user_id: recipient_id, friend_id: sender_id)
+      Friendrequest.find(id).update_attributes(status: 1)
   end
 
-  def reject_request
-    if recipient_id == current_user.id
-    end
-  end
+  # def reject_request
+  #   if recipient_id == current_user.id
+  #     @friendrequest.update_attribute(:status, 2)
+  #   end
+  # end
 end
