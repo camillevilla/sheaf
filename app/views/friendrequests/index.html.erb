@@ -3,7 +3,7 @@
 <h2>Received Requests</h2>
 <% if @received_requests.length > 0 %>
   <% @received_requests.each do |request| %>
-  <li><%= request.sender.name %> | <%= request.sender.email %> | <%= link_to 'Accept' %> | <%= link_to 'Reject' %></li>
+  <li><%= request.sender.name %> | <%= request.sender.email %> | <%= link_to 'Accept', friendrequest_path(request), method: :put %> | <%= link_to 'Reject', request, method: :delete %></li>
   <% end %>
 <% else %>
   <p>No outstanding requests</p>

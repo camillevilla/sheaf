@@ -1,0 +1,9 @@
+<h1>Your Friends</h1>
+<% if @friends %>
+  <ul>
+  <% @friends.each do |friend| %>
+    <li><%= friend.name %></li>
+  <% end %>
+  </ul>
+<% end %>
+<%= link_to 'Add friends', friendrequests_path %>

@@ -22,6 +22,9 @@ RSpec.describe User, type: :model do
 
     it {should have_many(:sent_friendrequests).with_foreign_key('sender_id').class_name('Friendrequest')}
     it {should have_many(:received_friendrequests).with_foreign_key('recipient_id').class_name('Friendrequest')}
+
+    it {should have_many(:friendships)}
+    it {should have_many(:friends).through(:friendships).source(:user)}
   end
 
 end

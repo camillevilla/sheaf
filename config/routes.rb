@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   authenticate :user do
     resources :users do
       resources :copies
+      resources :friendships
     end
     resources :authors
     resources :works
