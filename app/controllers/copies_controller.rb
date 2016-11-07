@@ -1,6 +1,6 @@
 class CopiesController < ApplicationController
 
-  skip_before_filter :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
   
   def index
     @copies = Copy.where(user_id: params[:user_id])
@@ -23,47 +23,38 @@ class CopiesController < ApplicationController
   end
 
   def create
-    # DRY this up later
     @author = Author.new(author_params)
-    if Author.where(name: @author.name).empty? == false
-      @author = Author.where(name: @author.name)
-    else
+    if Author.where(name: @author.name).empty?
       @author.save
-      @author = Author.where(name: @author.name)
     end
+    @author = Author.where(name: @author.name)
 
     @work = Work.new(work_params.merge(author_id: @author[0].id))
-    if Work.where(title: @work.title).empty? == false
-      @work = Work.where(title: @work.title)[0]
-    else
+    if Work.where(title: @work.title).empty?
       @work.save
-      @work = Work.where(title: @work.title)[0]
     end
+    @work = Work.where(title: @work.title)[0]
 
     @publisher = Publisher.new(publisher_params)
-    if Publisher.where(name: @publisher.name).empty? == false
-      @publisher = Publisher.where(name: @publisher.name)
-    else
+    if Publisher.where(name: @publisher.name).empty?
       @publisher.save
-      @publisher = Publisher.where(name: @publisher.name)    end
-
-
+    end
+    @publisher = Publisher.where(name: @publisher.name)
+    
     @edition = Edition.new(edition_params.merge(
         work_id: @work.id,
         publisher_id: @publisher[0].id
-      ))
-
-    if Edition.where(work_id: @work.id, publisher_id: @publisher_id).empty? == false
-      @edition = Edition.where(work_id: @work.id, publisher_id: @publisher_id)[0]
-    else
+      ))   
+    if Edition.where(work_id: @work.id, publisher_id: @publisher_id).empty?
       @edition.save
+    else
+      @edition = Edition.where(work_id: @work.id, publisher_id: @publisher_id)[0]
     end    
 
     @copy = Copy.new(copy_params.merge(
       edition_id: @edition.id,
       user_id: current_user.id
       ))
-
     if @copy.save
       redirect_to user_copy_path(current_user,@copy)
     else
