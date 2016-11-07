@@ -26,7 +26,7 @@ class FriendrequestsController < ApplicationController
         sender_id: current_user.id,
         status: 0)
       )
-
+      
       #prevent creating multiple requests to same user
       if Friendrequest.where(
         recipient_id: recipient.id, 
@@ -42,10 +42,7 @@ class FriendrequestsController < ApplicationController
         redirect_to friendrequests_path
         # error message - "User has already sent you a request. Accept their invitation below:"
       # prevent adding existing friends
-      elsif Friendrequest.where(
-        recipient_id: current_user.id, 
-        sender_id: recipient.id,
-        status: 1).empty? == false
+      elsif friends?(current_user.id, recipient.id)
         redirect_to friendrequests_path
         # error message - "You're already friends!"
       elsif @request.save
