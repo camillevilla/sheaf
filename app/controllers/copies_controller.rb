@@ -72,6 +72,9 @@ class CopiesController < ApplicationController
   def show
     @copy = Copy.find(params[:id])
     @edition = @copy.edition
+    if @copy.owner != current_user || friends?(current_user, @copy.owner)
+      redirect_to root_url
+    end
   end
 
   def destroy
