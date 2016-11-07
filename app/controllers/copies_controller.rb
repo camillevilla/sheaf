@@ -1,9 +1,17 @@
 class CopiesController < ApplicationController
-
   skip_before_filter :verify_authenticity_token
+  
   def index
-    @user = current_user
-    @copies = Copy.where(user_id: @user.id)
+    # Only allow users to view their own library or their friends' libraries
+    if params[:user_id] == current_user.id
+      @user = current_user
+      @copies = Copy.where(user_id: @user.id)
+    elsif current_user.friends.include?(User.find(params[:user_id]))
+      @user = User.find(params[:user_id])
+      @copies = Copy.where(user_id: params[:user_id])
+    else
+      redirect_to root_url
+    end
   end
 
   def new
@@ -45,9 +53,7 @@ class CopiesController < ApplicationController
       @edition = Edition.where(work_id: @work.id, publisher_id: @publisher_id)[0]
     else
       @edition.save
-    end
-
-    
+    end    
 
     @copy = Copy.new(copy_params.merge(
       edition_id: @edition.id,
