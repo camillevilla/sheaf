@@ -3,13 +3,13 @@ class CopiesController < ApplicationController
   skip_before_filter :verify_authenticity_token
   
   def index
+    @copies = Copy.where(user_id: params[:user_id])
+
     # Only allow users to view their own library or their friends' libraries
-    if params[:user_id] == current_user.id
+    if current_user == User.find(params[:user_id])
       @user = current_user
-      @copies = Copy.where(user_id: @user.id)
     elsif friends?(current_user.id, params[:user_id])
       @user = User.find(params[:user_id])
-      @copies = Copy.where(user_id: @user.id)
     else
       redirect_to root_url
     end
@@ -72,7 +72,7 @@ class CopiesController < ApplicationController
   def show
     @copy = Copy.find(params[:id])
     @edition = @copy.edition
-    if @copy.owner != current_user || friends?(current_user, @copy.owner)
+    if !(@copy.owner == current_user || friends?(current_user.id, @copy.owner.id))
       redirect_to root_url
     end
   end
