@@ -17,6 +17,9 @@ class CopiesController < ApplicationController
 
   def new
     @copy = Copy.new
+    if current_user != User.find(params[:user_id])
+      redirect_to root_url
+    end
   end
 
   def create
