@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20161103015606) do
   create_table "loans", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "copy_id"
+    t.integer  "status_code"
     t.date     "checkout_date"
     t.date     "return_date"
     t.datetime "created_at",    null: false

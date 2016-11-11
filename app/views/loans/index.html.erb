@@ -1,0 +1,16 @@
+<h1>Your Loans</h1>
+
+<h2>Borrowed Books</h2>
+<!-- turn that stupid table into a partial -->
+
+<h2>Lent Books</h2>
+<!-- copies partial -->
+
+<h2>Pending Loan Requests</h2>
+<% if @pending_requests.length > 0 %>
+  <% @pending_requests.each do |request| %>
+  <li><%= request.borrower.name %> | <%= request.borrower.email %> | <%= link_to 'Accept', loan_path(request), method: :put %> | <%= link_to 'Reject', request, method: :delete %></li>
+  <% end %>
+<% else %>
+  <p>No outstanding requests</p>
+<% end %>
