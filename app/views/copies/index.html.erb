@@ -6,6 +6,7 @@
     <th>Publisher</th>
     <th>Publication Year</th>
     <th>ISBN13</th>
+    <th>&nbsp;</th>
   </thead>
 <% @copies.each do |copy| %>
   <tr>
@@ -14,6 +15,9 @@
     <td><%= copy.edition.publisher.name %></td>
     <td><%= copy.edition.publication_year %></td>
     <td><%= copy.edition.isbn13 %></td>
+    <% if @user != current_user %>
+      <td><%= link_to 'Borrow', copy_loans_path(copy), method: :post %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
