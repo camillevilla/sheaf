@@ -1,10 +1,52 @@
 <h1>Your Loans</h1>
 
 <h2>Borrowed Books</h2>
-<!-- turn that stupid table into a partial -->
+<table class="table table-striped table-responsive">
+  <thead>
+    <th>Owner</th>
+    <th>Author</th>
+    <th>Title</th>
+    <th>Publisher</th>
+    <th>Publication Year</th>
+    <th>ISBN13</th>
+    <th>&nbsp;</th>
+  </thead>
+<% @borrowed_copies.each do |loan| %>
+  <tr>
+    <td><%= loan.owner.name %></td>
+    <td><%= loan.copy.edition.authors[0].name %></td>
+    <td><%= loan.copy.edition.work.title %></td>
+    <td><%= loan.copy.edition.publisher.name %></td>
+    <td><%= loan.copy.edition.publication_year %></td>
+    <td><%= loan.copy.edition.isbn13 %></td>
+    <td><%= link_to 'Return', loan, method: :delete %></td>
+  </tr>
+<% end %>
+</table>
 
 <h2>Lent Books</h2>
-<!-- copies partial -->
+<table class="table table-striped table-responsive">
+  <thead>
+    <th>Borrower</th>
+    <th>Author</th>
+    <th>Title</th>
+    <th>Publisher</th>
+    <th>Publication Year</th>
+    <th>ISBN13</th>
+    <th>&nbsp;</th>
+  </thead>
+<% @lent_copies.each do |loan| %>
+  <tr>
+    <td><%= loan.borrower.name %></td>
+    <td><%= loan.copy.edition.authors[0].name %></td>
+    <td><%= loan.copy.edition.work.title %></td>
+    <td><%= loan.copy.edition.publisher.name %></td>
+    <td><%= loan.copy.edition.publication_year %></td>
+    <td><%= loan.copy.edition.isbn13 %></td>
+    <td><%= link_to 'Return', loan, method: :delete %></td>
+  </tr>
+<% end %>
+</table>
 
 <h2>Pending Loan Requests</h2>
 <% if @pending_requests.length > 0 %>
