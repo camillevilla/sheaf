@@ -4,9 +4,7 @@ RSpec.describe Author, type: :model do
 
 
   describe "attributes" do
-    it "has a name" do 
-      expect(build(:author).name).to eq "Toni Morrison"
-    end
+    it {should have_db_column(:name)}
   end
 
   describe "associations" do

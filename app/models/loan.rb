@@ -5,4 +5,14 @@ class Loan < ApplicationRecord
 
   validates :copy, presence: true
   validates :borrower, presence: true
+  validates :owner, presence: true
+  validates :status_code, presence: true
+
+  def lend_copy
+    update_attributes(status_code: 1)
+  end
+
+  def return_copy
+    update_attributes(status_code: 2)
+  end
 end
