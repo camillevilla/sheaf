@@ -5,8 +5,11 @@
   <%= render "works/new"%>
   <%= render "publishers/new"%>
   <%= render "editions/new"%>
-  <p><input type="date" name="copy[acquisition_date]"></p>
-  <button class="btn" type="submit">Submit</button>
+  <div class="form-group">
+  <label for="copyAcquisitionDate">Acquisition Date</label>
+  <input type="date" name="copy[acquisition_date]" id="copyAcquisitionDate" class="form-control">
+  </div>
+  <button class="btn btn-primary" type="submit">Submit</button>
 </form>
 
 <!-- link back to user's copies -->
