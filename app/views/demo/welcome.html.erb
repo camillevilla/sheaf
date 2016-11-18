@@ -1,14 +1,14 @@
-<h1>Sheaf</h1>
+<div class="text-xs-center">
+<%= image_tag "sheaf-low-res.png"%>
 
 <% if user_signed_in? %>
-Hi, <%= current_user.name %>! Here are some things you can do:
+<p class="lead">Hi, <%= current_user.name %>! Here are some things you can do:</p>
 <ul>
-  <li><%= link_to 'Add a book to your library', new_user_copy_path(current_user) %></li>
-  <li><%= link_to 'Your library', user_copies_path(current_user) %></li>
-  <li><%= link_to 'Your friends', user_friendships_path(current_user) %></li>
-  <li><%= link_to 'Add friends', friendrequests_path %></li>
-  <li>Books you're borrowing</li>
-  <li>Books you're lending</li>
+  <div class="col-sm-6"><div class="card card-block"><%= link_to 'Add a book', new_user_copy_path(current_user), class: "card-title" %><p class="card-text">Grow your collection</p></div></div>
+  <div class="col-sm-6"><div class="card card-block"><%= link_to 'Your library', user_copies_path(current_user), class: "card-title" %><p class="card-text">Manage your collection</p></div></div>
+  <div class="col-sm-6"><div class="card card-block"><%= link_to 'Friends', user_friendships_path(current_user), class: "card-title" %><p class="card-text">Explore your friends' libraries</p></div></div>
+  <div class="col-sm-6"><div class="card card-block"><%= link_to 'Add friends', friendrequests_path, class: "card-title" %><p class="card-text">Invite friends to Sheaf</p></div></div>
+  <div class="col-sm-6"><div class="card card-block"><%= link_to 'Loans', loans_path, class: "card-title" %><p class="card-text">Books you're borrowing and lending</p></div></div>
 </ul>
 
 <% else %>
@@ -16,3 +16,4 @@ Hi, <%= current_user.name %>! Here are some things you can do:
 Sheaf is an app for borrowing and lending books with friends.
 
 <% end %>
+</div>
