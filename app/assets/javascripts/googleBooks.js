@@ -1,5 +1,6 @@
 $(document).ready(function() {
   lookupByISBN13();  
+  $('#lookup-status').hide()
 });
 
 var lookupByISBN13 = function(){
@@ -13,11 +14,21 @@ var lookupByISBN13 = function(){
 
 $.getJSON(googleBooksAPI + 'isbn:' + isbn13,
     function(data){
-      var volumeInfo = data.items[0]["volumeInfo"]
-
-      $('#authorName').val(volumeInfo["authors"][0]);
-      $('#workTitle').val(volumeInfo["title"]);
-      $('#publisherName').val(volumeInfo["publisher"]);
-      $('#editionPublicationyear').val(volumeInfo["publishedDate"]);
+      if (data.totalItems >= 1) {
+        var volumeInfo = data.items[0]["volumeInfo"]
+        console.log(volumeInfo)
+        $('#authorName').val(volumeInfo["authors"][0]);
+        $('#workTitle').val(volumeInfo["title"]);
+        $('#publisherName').val(volumeInfo["publisher"]);
+        $('#editionPublicationyear').val(volumeInfo["publishedDate"]);
+        $('#lookup-status').show()
+        $('#lookup-status').addClass('btn-success')
+        $('#lookup-status').html('<i class="fa fa-check fa-lg" alt="success"></i>')
+      } else {
+        console.log('error')
+        $('#lookup-status').show()
+        $('#lookup-status').addClass('btn-danger')
+        $('#lookup-status').html('<i class="fa fa-times fa-lg" alt="success"></i>')
+      }
     });
 })};

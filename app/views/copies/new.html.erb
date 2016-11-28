@@ -1,15 +1,24 @@
 <h2>Add a Book</h2>
 
 <form id="new-copy-form" method="POST" action="/users/<%= current_user.id %>/copies">
+
+  <!-- ISBN lookups -->
+  <%= render "editions/isbns"%>
+  <!-- author -->
   <%= render "authors/new"%>
+  <!-- title -->
   <%= render "works/new"%>
+  <!-- publisher & publication year -->
   <%= render "publishers/new"%>
+  <!-- format -->
   <%= render "editions/new"%>
+
+  <!-- acquisition date -->
   <div class="form-group">
-  <label for="copyAcquisitionDate">Acquisition Date</label>
-  <input type="date" name="copy[acquisition_date]" id="copyAcquisitionDate" class="form-control">
+    <label for="copyAcquisitionDate">Acquisition Date</label>
+    <input type="date" name="copy[acquisition_date]" id="copyAcquisitionDate" class="form-control" value="">
   </div>
-  <button class="btn btn-primary" id="lookupISBN" type="submit">Look Up by ISBN</button>
+  
   <button class="btn btn-primary" type="submit">Submit</button>
 </form>
 
