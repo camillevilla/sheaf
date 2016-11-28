@@ -1,6 +1,6 @@
 class LoansController < ApplicationController
   skip_before_action :verify_authenticity_token
-  include TwilioHelper
+  # include TwilioHelper
 
   def index
     @borrowed_copies = Loan.where(borrower: current_user, status_code: 1)

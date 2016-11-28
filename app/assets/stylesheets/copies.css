@@ -1,0 +1,12 @@
+#lookup-status-container{
+  display: none;
+}
+
+#lookup-status{
+  display: none;
+  margin: auto 20px;
+}
+
+#lookup-failure-message{
+  display: none;
+}
