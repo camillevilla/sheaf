@@ -2,11 +2,13 @@
 
 Sheaf is an app for borrowing and lending books with friends. 
 
-## Status
-- Currently rebuilding this project in Rails! The old Sinatra prototype can be found [on Heroku](https://sheaf-books.herokuapp.com/) and [GitHub](https://github.com/camillevilla/sheaf/tree/master).
-
 ## Features
-- [x] Quickly catalog books by adding metadata from Google Books
-- [x] Share your library with friends
-- [ ] Send a borrow request to friends via text or email
-- [ ] PDF / .mobi / .epub downloads
+- [x] Quickly catalog books by ISBN and add metadata from Google Books
+- [x] Metadata for bibliophiles: supports multiple translations, editions, printings, etc.
+- [x] Share your library with friends and send borrow requests
+- [x] Keep track of books you're currently borrowing and lending
+
+Coming soon:
+- [ ] Send requests and reminders via text or email
+- [ ] Bulk import and export books via CSV
+- [ ] Share your DRM-free e-books and expose your hidden library! Sheaf will feature an integrated catalog entries for print books and ebooks.
