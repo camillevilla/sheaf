@@ -81,11 +81,11 @@ class CopiesController < ApplicationController
   private
 
   def copy_params
-    params.require(:copy).permit(:user_id, :edition_id, :acquisition_date)
+    params.require(:copy).permit(:user_id, :edition_id, :acquisition_date, :url)
   end
 
   def edition_params
-    params.require(:edition).permit(:author_id, :work_id, :publisher_id, :publication_year, :format_type, :isbn10, :isbn13)
+    params.require(:edition).permit(:author_id, :work_id, :publisher_id, :publication_year, :format, :isbn10, :isbn13)
   end
 
   def publisher_params

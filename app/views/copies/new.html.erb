@@ -13,6 +13,12 @@
   <!-- format -->
   <%= render "editions/new"%>
 
+  <div class="form-group">
+    <label for="copyUrl">Download URL</label>
+    <input type="text" name="copy[url]" id="editionUrl" class="form-control" placeholder="http://">
+    <small id="copyUrl" class="form-text text-muted">Add links to your private files (e.g. Dropbox, Google Drive) or public copies (e.g. archive.org, Project Gutenberg)</small>
+  </div>
+
   <!-- acquisition date -->
   <div class="form-group">
     <label for="copyAcquisitionDate">Acquisition Date</label>
