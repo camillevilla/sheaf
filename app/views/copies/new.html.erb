@@ -1,5 +1,19 @@
 <h2>Add a Book</h2>
 
+
+<% if @copy.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@copy.errors.count, "error") %> prohibited this copy from being saved:</h2>
+ 
+    <ul>
+    <% @copy.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
 <form id="new-copy-form" method="POST" action="/users/<%= current_user.id %>/copies">
 
   <!-- ISBN lookups -->
