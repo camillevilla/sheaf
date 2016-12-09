@@ -7,8 +7,8 @@ Sheaf is an app for borrowing and lending books with friends.
 - [x] Metadata for bibliophiles: supports multiple translations, editions, printings, etc.
 - [x] Share your library with friends and send borrow requests
 - [x] Keep track of books you're currently borrowing and lending
+- [x] Share your DRM-free e-books and expose your hidden library! Sheaf's catalog integrates information about your print books and ebooks
 
 Coming soon:
 - [ ] Send requests and reminders via text or email
 - [ ] Bulk import and export books via CSV
-- [ ] Share your DRM-free e-books and expose your hidden library! Sheaf will feature an integrated catalog entries for print books and ebooks.
