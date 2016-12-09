@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20161103015606) do
   create_table "copies", force: :cascade do |t|
     t.integer  "user_id"
     t.date     "acquisition_date"
+    t.string   "url"
     t.integer  "edition_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
@@ -33,19 +34,13 @@ ActiveRecord::Schema.define(version: 20161103015606) do
     t.integer  "work_id"
     t.integer  "publisher_id"
     t.integer  "publication_year"
-    t.string   "format_type"
+    t.integer  "format"
     t.string   "isbn10"
     t.string   "isbn13"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.index ["publisher_id"], name: "index_editions_on_publisher_id", using: :btree
     t.index ["work_id"], name: "index_editions_on_work_id", using: :btree
-  end
-
-  create_table "formats", force: :cascade do |t|
-    t.string   "kind"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "friendrequests", force: :cascade do |t|

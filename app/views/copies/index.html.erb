@@ -6,6 +6,7 @@
     <th>Publisher</th>
     <th>Publication Year</th>
     <th>ISBN13</th>
+    <th>Format</th>
     <th>&nbsp;</th>
   </thead>
 <% @copies.each do |copy| %>
@@ -15,16 +16,21 @@
     <td><%= copy.edition.publisher.name %></td>
     <td><%= copy.edition.publication_year %></td>
     <td><%= copy.edition.isbn13 %></td>
-      <td>
-        <% if copy.loan_pending?(current_user) %>Pending Request 
-        <% elsif copy.borrowed? %>
-          Unavailable
-        <% elsif @user != current_user && copy.available?%>
-          <%= link_to 'Borrow', copy_loans_path(copy), method: :post %>
-        <% else %>
-          -
-        <% end %>
-      </td>
+    <td><%= copy.edition.format_type %></td>
+    <td>
+      <!-- download -->
+      <% if !copy.url.empty? %>
+        <%= link_to 'Download', copy.url, class: "btn btn-success", target: "_blank" %>
+      <% elsif copy.loan_pending?(current_user) %>
+        Pending Request 
+      <% elsif copy.borrowed? %>
+        Unavailable
+      <% elsif @user != current_user && copy.available?%>
+        <%= link_to 'Borrow', copy_loans_path(copy), method: :post, class: "btn btn-primary" %>
+      <% else %>
+        -
+      <% end %>
+    </td>
   </tr>
 <% end %>
 </table>

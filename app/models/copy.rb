@@ -4,6 +4,13 @@ class Copy < ApplicationRecord
 
   validates :edition, presence: true
   validates :owner, presence: true
+  validate :url_valid?, if: 'url.present?'
+
+
+  def url_valid?
+    copy_url = URI(url) rescue false
+    errors.add(:url, "not a valid URL") unless (copy_url.kind_of?(URI::HTTP) || copy_url.kind_of?(URI::HTTPS))
+  end 
 
   def available?
     Loan.where(copy_id: id, status_code: 1).empty?

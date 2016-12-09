@@ -12,15 +12,11 @@ FactoryGirl.define do
     name {Faker::Book::publisher}
   end
 
-  # factory :format do
-  #   kind "print"
-  # end
-
   factory :edition do
     work
     publisher
     publication_year 1977
-    format_type "paperback"
+    format 0
   end
 
   # rename this factory, create a second user
