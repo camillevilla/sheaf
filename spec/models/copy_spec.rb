@@ -7,6 +7,7 @@ RSpec.describe Copy, type: :model do
     it { should have_db_column(:acquisition_date) }
     it { should have_db_column(:url) }
     it { should have_db_column(:edition_id) }
+    it { should have_db_column(:format_id) }
   end
   
   describe "validations" do
@@ -17,6 +18,7 @@ RSpec.describe Copy, type: :model do
   describe "associations" do 
     it {should belong_to(:owner).with_foreign_key('user_id').class_name('User')}
     it {should belong_to(:edition)}
+    it {should belong_to(:format)}
   end
 
 end
