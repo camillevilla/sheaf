@@ -52,7 +52,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="623" y="403" name="editions">
+<table x="629" y="401" name="editions">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -67,17 +67,11 @@
 <row name="publication_year" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="format_code" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
 <row name="isbn10" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="isbn13" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="url" null="1" autoincrement="0">
-<datatype>VARCHAR</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
@@ -98,6 +92,13 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="editions" row="id" />
 </row>
+<row name="format_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="formats" row="id" />
+</row>
+<row name="url" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
@@ -189,6 +190,17 @@
 </key>
 </table>
 <table x="829" y="548" name="publishers">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="name" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="420" y="561" name="formats">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>

@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+formats = Format.create([
+  {name: 'paperback'},
+  {name: 'hardcover'},
+  {name: 'oversized'},
+  {name: 'comic - issue'},
+  {name: 'comic - volume'},
+  {name: 'zine'},
+  {name: 'digital - miscellaneous'},
+  {name: 'PDF'},
+  {name: 'ePub'},
+  {name: 'mobi / Kindle'},
+  {name: 'in-browser'}
+  ])

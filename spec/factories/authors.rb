@@ -16,7 +16,6 @@ FactoryGirl.define do
     work
     publisher
     publication_year 1977
-    format 0
   end
 
   # rename this factory, create a second user
@@ -37,6 +36,7 @@ FactoryGirl.define do
   factory :copy do
     owner
     edition
+    format_id 1
   end
 
   factory :loan do

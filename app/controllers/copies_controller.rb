@@ -17,6 +17,7 @@ class CopiesController < ApplicationController
 
   def new
     @copy = Copy.new
+    @formats = Format.all
     if current_user != User.find(params[:user_id])
       redirect_to root_url
     end
@@ -81,11 +82,11 @@ class CopiesController < ApplicationController
   private
 
   def copy_params
-    params.require(:copy).permit(:user_id, :edition_id, :acquisition_date, :url)
+    params.require(:copy).permit(:user_id, :edition_id, :acquisition_date, :format_id, :url)
   end
 
   def edition_params
-    params.require(:edition).permit(:author_id, :work_id, :publisher_id, :publication_year, :format, :isbn10, :isbn13)
+    params.require(:edition).permit(:author_id, :work_id, :publisher_id, :publication_year, :isbn10, :isbn13)
   end
 
   def publisher_params
