@@ -24,9 +24,11 @@ ActiveRecord::Schema.define(version: 20161103015606) do
     t.date     "acquisition_date"
     t.string   "url"
     t.integer  "edition_id"
+    t.integer  "format_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.index ["edition_id"], name: "index_copies_on_edition_id", using: :btree
+    t.index ["format_id"], name: "index_copies_on_format_id", using: :btree
     t.index ["user_id"], name: "index_copies_on_user_id", using: :btree
   end
 
@@ -34,13 +36,18 @@ ActiveRecord::Schema.define(version: 20161103015606) do
     t.integer  "work_id"
     t.integer  "publisher_id"
     t.integer  "publication_year"
-    t.integer  "format"
     t.string   "isbn10"
     t.string   "isbn13"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.index ["publisher_id"], name: "index_editions_on_publisher_id", using: :btree
     t.index ["work_id"], name: "index_editions_on_work_id", using: :btree
+  end
+
+  create_table "formats", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "friendrequests", force: :cascade do |t|
@@ -103,6 +110,7 @@ ActiveRecord::Schema.define(version: 20161103015606) do
   end
 
   add_foreign_key "copies", "editions"
+  add_foreign_key "copies", "formats"
   add_foreign_key "copies", "users"
   add_foreign_key "editions", "publishers"
   add_foreign_key "editions", "works"

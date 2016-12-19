@@ -1,6 +1,7 @@
 class Copy < ApplicationRecord
   belongs_to :owner, foreign_key: "user_id",class_name: "User"
   belongs_to :edition
+  belongs_to :format
 
   validates :edition, presence: true
   validates :owner, presence: true

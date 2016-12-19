@@ -32,7 +32,7 @@ RSpec.describe Loan, type: :model do
 
     it "updates status code for returned loans" do
       loan = FactoryGirl.build(:loan)
-      expect{loan.return_copy}.to change{loan.status_code}.from(0).to(2)
+      expect{loan.return_copy}.to change{loan.status_code}.to(2)
     end
   
   end

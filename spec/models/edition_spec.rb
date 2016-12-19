@@ -6,7 +6,6 @@ RSpec.describe Edition, type: :model do
     it { should have_db_column(:work_id) }
     it { should have_db_column(:publisher_id) }
     it { should have_db_column(:publication_year) }
-    it { should have_db_column(:format) }
     it { should have_db_column(:isbn10) }
     it { should have_db_column(:isbn13) }
   end

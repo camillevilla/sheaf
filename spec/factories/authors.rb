@@ -16,7 +16,6 @@ FactoryGirl.define do
     work
     publisher
     publication_year 1977
-    format 0
   end
 
   # rename this factory, create a second user
@@ -34,9 +33,14 @@ FactoryGirl.define do
   password "password"
   end
 
+  factory :format do
+    name "paperback"
+  end
+
   factory :copy do
     owner
     edition
+    format
   end
 
   factory :loan do
