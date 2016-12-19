@@ -33,10 +33,14 @@ FactoryGirl.define do
   password "password"
   end
 
+  factory :format do
+    name "paperback"
+  end
+
   factory :copy do
     owner
     edition
-    format_id 1
+    format
   end
 
   factory :loan do
