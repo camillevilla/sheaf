@@ -19,3 +19,26 @@ formats = Format.create([
   {name: 'mobi / Kindle'},
   {name: 'in-browser'}
   ])
+
+
+admin = 
+  User.new(
+    name: "Camille",
+    email: ENV['ADMIN_EMAIL'],
+    phone: ENV['ADMIN_PHONE'],
+    password: ENV['DEFAULT_PW']
+    )
+
+admin.save
+
+tabby = 
+  User.new(
+    name: "Tabby",
+    email: ENV['ADMIN_EMAIL2'],
+    phone: ENV['ADMIN_PHONE'],
+    password: ENV['DEFAULT_PW']
+    )
+
+tabby.save
+
+Friendship.create(user_id: admin.id, friend_id: tabby.id)
