@@ -17,8 +17,12 @@ class Copy < ApplicationRecord
     Loan.where(copy_id: id, status_code: 1).empty?
   end
 
-  def loan_pending?(current_user)
+  def requested?(current_user)
     Loan.where(borrower: current_user, copy_id: id, status_code: 0).exists?
+  end
+
+  def loan_pending?
+    Loan.where(copy_id: id, status_code: 0).exists?
   end
 
   def borrowed?

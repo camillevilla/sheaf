@@ -1,5 +1,5 @@
 /* global $ */
-$(document).ready(function () {
+$(document).on('turbolinks:load',function () {
   $('#lookup-status').hide()
   $('#lookup-failure-message').hide()
   resetLookupStatus()

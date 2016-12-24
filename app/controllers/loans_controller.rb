@@ -45,14 +45,12 @@ class LoansController < ApplicationController
     @loan = Loan.find(params[:id])
     @loan.lend_copy
     @loan.save
-    redirect_to loans_path
   end
 
   def destroy
     @loan = Loan.find(params[:id])
     @loan.return_copy
     @loan.save
-    redirect_to loans_path
   end
 
   # def sms_request
