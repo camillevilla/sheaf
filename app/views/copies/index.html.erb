@@ -35,5 +35,7 @@
 <% end %>
 </table>
 <p>
-  <%= link_to 'Add books', new_user_copy_path(current_user) %>
+  <% if @user == current_user %>
+    <%= link_to 'Add books', new_user_copy_path(current_user) %>
+  <% end %>
 </p>
