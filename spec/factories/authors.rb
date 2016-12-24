@@ -18,24 +18,12 @@ FactoryGirl.define do
     publication_year 1977
   end
 
-  # rename this factory, create a second user
-  # factory :user, aliases: [:owner, :borrower] do
-  #   name "Tom"
-  #   email "tom@tom.com"
-  #   phone "11231231234"
-  #   password "password"
-  # end
-
   factory :user, aliases: [:owner, :borrower] do |user|
   name {Faker::Name::first_name}
   email {Faker::Internet.email}
   phone "11231231234"
   password "password"
   end
-
-  # factory :format do
-  #   name "paperback"
-  # end
 
   factory :copy do
     owner
