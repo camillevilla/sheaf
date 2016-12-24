@@ -50,8 +50,28 @@
 
 <h2>Pending Loan Requests</h2>
 <% if @pending_requests.length > 0 %>
+  <table class="table table-striped table-responsive">
+    <thead>
+      <th>Borrower</th>
+      <th>Author</th>
+      <th>Title</th>
+      <th>Publisher</th>
+      <th>Publication Year</th>
+      <th>ISBN13</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+    </thead>
   <% @pending_requests.each do |request| %>
-  <li><%= request.borrower.name %> | <%= request.borrower.email %> | <%= link_to 'Accept', loan_path(request), method: :put %> | <%= link_to 'Reject', request, method: :delete %></li>
+  <tr>
+    <td><%= request.borrower.name %></td>
+    <td><%= request.copy.edition.authors[0].name %></td>
+    <td><%= request.copy.edition.work.title %></td>
+    <td><%= request.copy.edition.publisher.name %></td>
+    <td><%= request.copy.edition.publication_year %></td>
+    <td><%= request.copy.edition.isbn13 %></td>
+    <td><%= link_to 'Accept', loan_path(request), method: :put, class: "btn btn-success" %></td>
+    <td><%= link_to 'Reject', request, method: :delete, class: "btn btn-danger"%></td>
+  </tr>
   <% end %>
 <% else %>
   <p>No outstanding requests</p>
