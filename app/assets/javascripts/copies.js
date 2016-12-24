@@ -7,6 +7,6 @@ var sendBorrowRequest = function() {
     event.preventDefault()
     var borrowButton = $(this)
     $(borrowButton).hide()
-    $(borrowButton).parent().append('<button class="btn btn-warning btn-pending">Requested</button>')
+    $(borrowButton).parent().append('<button class="btn btn-warning btn-requested">Requested</button>')
   })
 }

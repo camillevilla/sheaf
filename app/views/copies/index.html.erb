@@ -21,10 +21,12 @@
       <!-- download -->
       <% if !copy.url.empty? %>
         <%= link_to 'Download', copy.url, class: "btn btn-success", target: "_blank" %>
-      <% elsif copy.loan_pending?(current_user) %>
-        <button class="btn btn-warning btn-pending">Requested</button>
+      <% elsif copy.requested?(current_user) %>
+        <button class="btn btn-warning btn-requested">Requested</button>
+      <% elsif copy.loan_pending? %>
+        <%= link_to 'Review Request', loans_path, method: :get, class: "btn btn-warning" %>
       <% elsif copy.borrowed? %>
-        Unavailable
+        Borrowed
       <% elsif @user != current_user && copy.available?%>
         <%= link_to 'Borrow', copy_loans_path(copy), method: :post, class: "btn btn-primary btn-borrow" %>
       <% else %>
