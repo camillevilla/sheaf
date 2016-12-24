@@ -28,9 +28,9 @@ class Copy < ApplicationRecord
   def borrowed?
     Loan.where(copy_id: id, status_code: 1).exists?
   end
-
-  def current_loan
-    Loan.find(copy_id: id, status_code: 1)
-  end
+  
+  # def current_loan
+  #   Loan.find(copy_id: id, status_code: 1)
+  # end
 
 end

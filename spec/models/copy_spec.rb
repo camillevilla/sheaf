@@ -21,4 +21,30 @@ RSpec.describe Copy, type: :model do
     it {should belong_to(:format)}
   end
 
+  describe "methods" do
+
+    it "copy is available to borrow" do 
+      copy = FactoryGirl.build(:copy)
+      expect(copy.available?).to eq true
+    end
+
+    it "user has requested copy from a friend" do 
+      copy = FactoryGirl.create(:copy, user_id: 2)
+      loan = FactoryGirl.create(:loan, copy_id: copy.id, user_id: 1, status_code: 0)
+      expect(copy.requested?(User.find(1))).to eq true
+    end
+
+    it "pending request for copy owner by user" do
+      copy = FactoryGirl.create(:copy, user_id: 2)
+      loan = FactoryGirl.create(:loan, copy_id: copy.id, user_id: 1, status_code: 0)
+      expect(copy.loan_pending?).to eq true
+    end
+
+    it "user's copy is being borrowed" do
+      copy = FactoryGirl.create(:copy, user_id: 2)
+      loan = FactoryGirl.create(:loan, copy_id: copy.id, user_id: 1, status_code: 1)
+      expect(copy.borrowed?).to eq true
+    end
+
+  end
 end
