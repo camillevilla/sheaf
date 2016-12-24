@@ -26,7 +26,7 @@
 
 
 <h2>Lent Books</h2>
-<table class="table table-striped table-responsive">
+<table class="table table-striped table-responsive" id="lent-books-table">
   <thead>
     <th>Borrower</th>
     <th>Author</th>
@@ -70,8 +70,8 @@
     <td><%= request.copy.edition.publisher.name %></td>
     <td><%= request.copy.edition.publication_year %></td>
     <td><%= request.copy.format.name %></td>
-    <td><%= link_to 'Accept', loan_path(request), method: :put, class: "btn btn-success" %></td>
-    <td><%= link_to 'Reject', request, method: :delete, class: "btn btn-danger"%></td>
+    <td><%= link_to 'Accept', loan_path(request), method: :put, class: "btn btn-success btn-accept" %></td>
+    <td><%= link_to 'Reject', request, method: :delete, class: "btn btn-danger btn-reject"%></td>
   </tr>
   <% end %>
 <% else %>
