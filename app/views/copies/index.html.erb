@@ -17,16 +17,16 @@
     <td><%= copy.edition.publication_year %></td>
     <td><%= copy.edition.isbn13 %></td>
     <td><%= copy.format.name %></td>
-    <td>
+    <td class="action-column">
       <!-- download -->
       <% if !copy.url.empty? %>
         <%= link_to 'Download', copy.url, class: "btn btn-success", target: "_blank" %>
       <% elsif copy.loan_pending?(current_user) %>
-        Pending Request 
+        <button class="btn btn-warning btn-pending">Requested</button>
       <% elsif copy.borrowed? %>
         Unavailable
       <% elsif @user != current_user && copy.available?%>
-        <%= link_to 'Borrow', copy_loans_path(copy), method: :post, class: "btn btn-primary" %>
+        <%= link_to 'Borrow', copy_loans_path(copy), method: :post, class: "btn btn-primary btn-borrow" %>
       <% else %>
         -
       <% end %>
