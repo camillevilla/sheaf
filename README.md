@@ -1,5 +1,7 @@
 ![Sheaf Logo](/app/assets/images/sheaf-low-res.png)
 
+[![Build Status](https://travis-ci.org/camillevilla/sheaf.svg?branch=rails-development)](https://travis-ci.org/camillevilla/sheaf)
+
 ## Problem
 You have a little library and you love to share. But where *did* your copy of *Americanah* disappear to? Can anyone lend you some ebooks for your upcoming trip? You trust your friend's taste (you would read anything they own), but what's in their collection?
 
