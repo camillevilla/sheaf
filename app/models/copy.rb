@@ -33,4 +33,15 @@ class Copy < ApplicationRecord
   #   Loan.find(copy_id: id, status_code: 1)
   # end
 
+  def self.csv_export
+    attributes = %w{id user_id acquisition_date url edition_id format_id}
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.each do |copy|
+        csv << attributes.map { |attr| copy.send(attr)}
+      end
+    end
+  end
+
 end
