@@ -44,4 +44,22 @@ class Copy < ApplicationRecord
     end
   end
 
+  def full_record
+    copy_info = {acquisition_date: acquisition_date, url: url}
+    edition = Edition.find(self.edition_id)
+    publisher = Publisher.find(edition.publisher_id)
+    work = Work.find(edition.work_id)
+    author = Author.find(work.author_id)
+    format = Format.find(format_id)
+
+    copy_info[:publication_year] = edition.publication_year
+    copy_info[:isbn10] = edition.isbn10
+    copy_info[:isbn13] = edition.isbn13
+    copy_info[:publisher] = publisher.name
+    copy_info[:work] = work.title
+    copy_info[:author] = author.name
+
+    copy_info
+  end
+
 end
