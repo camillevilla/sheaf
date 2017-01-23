@@ -19,7 +19,7 @@
     <td><%= copy.format.name %></td>
     <td class="action-column">
       <!-- download -->
-      <% if !copy.url.empty? %>
+      <% if copy.url %>
         <%= link_to 'Download', copy.url, class: "btn btn-success", target: "_blank" %>
       <% elsif copy.requested?(current_user) %>
         <button class="btn btn-warning btn-requested">Requested</button>
