@@ -20,13 +20,11 @@ class FriendrequestsController < ApplicationController
       InvitationMailer.join_sheaf(current_user, @email).deliver_now
       redirect_to friendrequests_path
     else
-
       @request = Friendrequest.new(friendrequest_params.merge(
         recipient_id: recipient.id, 
         sender_id: current_user.id,
         status: 0)
       )
-      
       #prevent creating multiple requests to same user
       if Friendrequest.where(
         recipient_id: recipient.id, 
@@ -50,7 +48,6 @@ class FriendrequestsController < ApplicationController
       else
         render :new
       end
-
     end
   end
 

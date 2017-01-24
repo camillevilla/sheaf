@@ -19,26 +19,7 @@ class LoansController < ApplicationController
   def create
     @loan = Loan.create(borrower: current_user, copy_id: params[:copy_id],status_code: 0)
 
-    #  # twilio SMS
-    # @copy = Copy.find(params[:copy_id])
-    # @owner = @copy.owner
-    # recipient = @owner.phone
-    # message = params[:request]
-
-    # # send_sms(recipient, message)
-    # client = Twilio::REST::Client.new(
-    #   ENV["TWILIO_ACCOUNT_SID"],
-    #   ENV["TWILIO_AUTH_TOKEN"]
-    #   )
-
-    # client.messages.create(
-    #   to: recipient,
-    #   from: ENV["TWILIO_PHONE_NUMBER"],
-    #   body: message
-    #   )
-
-    # # eventually redirect to a nicer success page
-    # redirect_to user_copies_path(@owner)
+    redirect_to user_copies_path(@owner)
   end
 
   def update
@@ -53,15 +34,4 @@ class LoansController < ApplicationController
     @loan.save
   end
 
-  # def sms_request
-  #   @copy = Copy.find(params[:copy_id])
-  #   @owner = @copy.owner
-  #   recipient = @owner.phone
-  #   message = params[:request]
-
-  #   send_sms(recipient, message)
-
-  #   # eventually redirect to a nicer success page
-  #   redirect_to user_copies_path(@owner)
-  # end
 end

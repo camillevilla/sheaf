@@ -5,7 +5,6 @@ class AuthorsController < ApplicationController
 
   def new
     @author = Author.new
-    # work = @author.works.build
   end
 
   def create

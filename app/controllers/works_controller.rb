@@ -29,13 +29,6 @@ class WorksController < ApplicationController
       render :new
     end
 
-
-    # old controller
-    # if @work.save
-    #   redirect_to work_path(@work)
-    # else
-    #   render :new
-    # end
   end
 
   def show
