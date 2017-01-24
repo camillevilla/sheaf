@@ -3,7 +3,6 @@ class CopiesController < ApplicationController
   skip_before_action :verify_authenticity_token
   
   def index
-    @copies = Copy.where(user_id: params[:user_id])
 
     # Only allow users to view their own library or their friends' libraries
     if current_user == User.find(params[:user_id])
@@ -12,6 +11,13 @@ class CopiesController < ApplicationController
       @user = User.find(params[:user_id])
     else
       redirect_to root_url
+    end
+
+    @copies = Copy.where(user_id: params[:user_id])
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @copies.csv_export, filename: "library.csv"}
     end
   end
 
