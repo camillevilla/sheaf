@@ -23,6 +23,7 @@ Sheaf is an app that makes it easier manage your collection of print and digital
 
 ## Stack
 - Ruby on Rails
+- PostgreSQL
 - JavaScript: jQuery and AJAX
 - Google Books API
 - Twilio SMS
