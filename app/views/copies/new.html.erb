@@ -1,6 +1,5 @@
 <h2>Add a Book</h2>
 
-
 <% if @copy.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@copy.errors.count, "error") %> prohibited this copy from being saved:</h2>
@@ -13,41 +12,44 @@
   </div>
 <% end %>
 
-
-<form id="new-copy-form" method="POST" action="/users/<%= current_user.id %>/copies">
-
-  <!-- ISBN lookups -->
-  <%= render "editions/isbns"%>
-  <!-- author -->
-  <%= render "authors/new"%>
-  <!-- title -->
-  <%= render "works/new"%>
-  <!-- publisher & publication year -->
-  <%= render "publishers/new"%>
-  <%= render "editions/new"%>
+<%= form_for(@copy) do |f| %>  
 
   <div class="form-group">
-    <label for="copyFormat">Format</label>
-    <select class="form-control" name="copy[format_id]" id="copyFormat" class="form-control">
-      <% @formats.each do |format| %>
-        <option value="<%= format.id %>"><%= format.name %></option>
-      <% end %>
-    </select>
+    <%= label_tag(:author) %>
+    <%= text_field(:author, :name, class: 'form-control')  %>
+  </div>  
+
+  <div class="form-group">
+    <%= label_tag(:work, 'Title') %>
+    <%= text_field(:work, :title, class: 'form-control')  %>
+  </div>  
+
+  <div class="form-group">
+    <%= label_tag(:publisher, 'Publication') %>
+    <%= text_field(:publisher, :name, class: 'form-control') %>  
   </div>
 
   <div class="form-group">
-    <label for="copyUrl">Download URL</label>
-    <input type="text" name="copy[url]" id="editionUrl" class="form-control" placeholder="http://">
-    <small id="copyUrl" class="form-text text-muted">Add links to your private files (e.g. Dropbox, Google Drive) or public copies (e.g. archive.org, Project Gutenberg)</small>
+    <%= label_tag(:edition, 'Publication Year') %>
+    <%= text_field(:edition, :publication_year, class: 'form-control')  %>  
   </div>
 
-  <!-- acquisition date -->
   <div class="form-group">
-    <label for="copyAcquisitionDate">Acquisition Date</label>
-    <input type="date" name="copy[acquisition_date]" id="copyAcquisitionDate" class="form-control" value="<%= Date.today.strftime('%Y-%m-%d') %>">
+    <%= f.label :url, 'Download URL'%>
+    <%= f.text_field :url, class: 'form-control', placeholder: 'http://' %>
   </div>
-  <button class="btn btn-primary" type="submit">Submit</button>
-  <button class="btn btn-secondary" type="reset">Reset</button>
-</form>
 
-<!-- link back to user's copies -->
+  <div class="form-group">
+    <%= f.label :format_id, "Format" %>
+    <%= f.collection_select(:format_id, Format.all, :id, :name) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :acquistion_date %>
+    <%= date_field :copy, :acquisition_date, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Submit', class: 'btn btn-primary' %>
+  </div>
+<% end %>
