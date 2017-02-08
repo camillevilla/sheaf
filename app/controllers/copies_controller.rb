@@ -1,7 +1,7 @@
 class CopiesController < ApplicationController
 
   skip_before_action :verify_authenticity_token
-  
+  before_action :set_copy, only: [:show, :edit, :update, :destroy]
   def index
     @user = User.find(params[:user_id])
     # Only allow users to view their own library or their friends' libraries
@@ -67,7 +67,6 @@ class CopiesController < ApplicationController
   end
 
   def show
-    @copy = Copy.find(params[:id])
     @edition = @copy.edition
     if access_authorized?(@copy.owner) == false
       redirect_to root_url
@@ -75,14 +74,13 @@ class CopiesController < ApplicationController
   end
 
   def destroy
-    @copy = Copy.find(params[:id])
-
     @copy.destroy
     redirect_to copies_path
   end
 
   private
 
+  # params
   def copy_params
     params.require(:copy).permit(:user_id, :edition_id, :acquisition_date, :format_id, :url)
   end
@@ -101,6 +99,12 @@ class CopiesController < ApplicationController
 
   def author_params
     params.require(:author).permit(:name)
+  end
+
+  # filters
+
+  def set_copy
+    @copy = Copy.find(params[:id])
   end
 
 end
