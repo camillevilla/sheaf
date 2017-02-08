@@ -13,8 +13,8 @@ var searchButton = function () {
   $('#lookupISBN').on('click', function (event) {
     event.preventDefault()
     resetLookupStatus()
-    var isbn13 = $('#editionISBN13').val()
-    var isbn10 = $('#editionISBN10').val()
+    var isbn13 = $('#edition_isbn13').val()
+    var isbn10 = $('#edition_isbn10').val()
 
   // prevent search if both ISBN fields are empty
     if (isbn13 === '') {
