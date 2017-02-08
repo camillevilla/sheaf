@@ -25,6 +25,14 @@ class CopiesController < ApplicationController
     end
   end
 
+  def edit
+    @formats = Format.all
+    @edition = @copy.edition
+    @publisher = @edition.publisher
+    @work = @edition.work
+    @author = @work.author
+  end
+
   def create
     @author = Author.new(author_params)
     if Author.where(name: @author.name).empty?
