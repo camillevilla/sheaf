@@ -13,6 +13,8 @@
 <% end %>
 
 <%= form_for(@copy) do |f| %>  
+  
+  <%= render "editions/isbns"%>
 
   <div class="form-group">
     <%= label_tag(:author) %>
