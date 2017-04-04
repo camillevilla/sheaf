@@ -1,16 +1,15 @@
 class CopiesController < ApplicationController
-
   skip_before_action :verify_authenticity_token
   before_action :set_copy, only: [:show, :edit, :update, :destroy]
+  before_action :set_metadata, only: [:show, :edit]
+
   def index
     @user = User.find(params[:user_id])
     # Only allow users to view their own library or their friends' libraries
     if access_authorized?(@user) == false
       redirect_to root_url
     end
-
     @copies = Copy.where(user_id: params[:user_id])
-
     respond_to do |format|
       format.html
       format.csv { send_data @copies.csv_export, filename: "library.csv"}
@@ -27,10 +26,6 @@ class CopiesController < ApplicationController
 
   def edit
     @formats = Format.all
-    @edition = @copy.edition
-    @publisher = @edition.publisher
-    @work = @edition.work
-    @author = @work.author
   end
 
   def create
@@ -75,7 +70,7 @@ class CopiesController < ApplicationController
   end
 
   def show
-    @edition = @copy.edition
+    @format = @copy.format
     if access_authorized?(@copy.owner) == false
       redirect_to root_url
     end
@@ -113,6 +108,14 @@ class CopiesController < ApplicationController
 
   def set_copy
     @copy = Copy.find(params[:id])
+  end
+
+  def set_metadata
+    @edition = @copy.edition
+    @work = @edition.work
+    @publisher = @edition.publisher
+    @work = @edition.work
+    @author = @work.author
   end
 
 end
