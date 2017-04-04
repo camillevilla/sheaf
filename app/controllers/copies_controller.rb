@@ -1,16 +1,15 @@
 class CopiesController < ApplicationController
-
   skip_before_action :verify_authenticity_token
-  
+  before_action :set_copy, only: [:show, :edit, :update, :destroy]
+  before_action :set_metadata, only: [:show, :edit, :update]
+
   def index
     @user = User.find(params[:user_id])
     # Only allow users to view their own library or their friends' libraries
     if access_authorized?(@user) == false
       redirect_to root_url
     end
-
     @copies = Copy.where(user_id: params[:user_id])
-
     respond_to do |format|
       format.html
       format.csv { send_data @copies.csv_export, filename: "library.csv"}
@@ -23,6 +22,10 @@ class CopiesController < ApplicationController
     if current_user != User.find(params[:user_id])
       redirect_to root_url
     end
+  end
+
+  def edit
+    @formats = Format.all
   end
 
   def create
@@ -63,26 +66,31 @@ class CopiesController < ApplicationController
     else
       render :new
     end
+  end
 
+  def update
+    if @copy.update(copy_params)
+      redirect_to user_copy_path(@copy.owner, @copy)
+    else
+      render :edit
+    end
   end
 
   def show
-    @copy = Copy.find(params[:id])
-    @edition = @copy.edition
+    @format = @copy.format
     if access_authorized?(@copy.owner) == false
       redirect_to root_url
     end
   end
 
   def destroy
-    @copy = Copy.find(params[:id])
-
     @copy.destroy
     redirect_to copies_path
   end
 
   private
 
+  # params
   def copy_params
     params.require(:copy).permit(:user_id, :edition_id, :acquisition_date, :format_id, :url)
   end
@@ -101,6 +109,20 @@ class CopiesController < ApplicationController
 
   def author_params
     params.require(:author).permit(:name)
+  end
+
+  # filters
+
+  def set_copy
+    @copy = Copy.find(params[:id])
+  end
+
+  def set_metadata
+    @edition = @copy.edition
+    @work = @edition.work
+    @publisher = @edition.publisher
+    @work = @edition.work
+    @author = @work.author
   end
 
 end

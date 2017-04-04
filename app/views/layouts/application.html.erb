@@ -14,7 +14,7 @@
   <body>
   <% unless controller_name == "demo" %>
     <nav class="navbar navbar-light">
-      <a class="navbar-brand" href="/">Sheaf</a>
+      <a class="navbar-brand" href="/"><%= image_tag "mini-logo.png", height: '30' %>Sheaf</a>
       <ul class="nav navbar-nav">
         <% if user_signed_in? %>
           <!-- <li>

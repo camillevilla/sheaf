@@ -7,7 +7,8 @@
     <th>Publication Year</th>
     <th>ISBN13</th>
     <th>Format</th>
-    <th>&nbsp;</th>
+    <th>Edit</th>
+    <th>Status</th>
   </thead>
 <% @copies.each do |copy| %>
   <tr>
@@ -17,9 +18,10 @@
     <td><%= copy.edition.publication_year %></td>
     <td><%= copy.edition.isbn13 %></td>
     <td><%= copy.format.name %></td>
+    <td><%= link_to '<i class="fa fa-search" aria-hidden="true"></i>'.html_safe, user_copy_path(@user,copy), alt: "View record: #{copy.edition.work.title}" %></td>  
     <td class="action-column">
       <!-- download -->
-      <% if copy.url %>
+      <% if !copy.url.empty? %>
         <%= link_to 'Download', copy.url, class: "btn btn-success", target: "_blank" %>
       <% elsif copy.requested?(current_user) %>
         <button class="btn btn-warning btn-requested">Requested</button>

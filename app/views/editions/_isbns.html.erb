@@ -1,19 +1,32 @@
-<div class="form-inline">
-<small id="isbnHelp" class="form-text text-muted">Quickly add metadata from Google Books</small>
-  <div class="form-group">
-    <label for="editionISBN13">ISBN13</label>
-    <input type="text" name="ISBN13" id="editionISBN13" class="form-control" placeholder="9780307739452">
-  </div>
+<div class="form-inline">  
+  <% if params[:action] == 'new'  %>
+  <small id="isbnHelp" class="form-text text-muted">Quickly add metadata from Google Books</small>
+    <div class="form-group">
+      <label for="edition_isbn13">ISBN13</label>    
+      <%= text_field(:edition, :isbn13, class: 'form-control', placeholder: '9780307739452') %>
+    </div>
 
-  <span class="ml-2 mr-2">OR</span>
+    <span class="ml-2 mr-2">OR</span>
 
-  <div class="form-group">
-  <label for="editionISBN10">ISBN10</label>
-  <input type="text" name="edition[isbn10]" id="editionISBN10" class="form-control" placeholder="0307739457">
-  </div>
+    <div class="form-group">
+      <label for="edition_isbn10">ISBN10</label>
+      <%= text_field(:edition, :isbn10, class: 'form-control', placeholder: '0307739457')  %>
+    </div>
 
-  
-  <button class="btn btn-primary ml-2" id="lookupISBN" type="submit">Search <i class="fa fa-search fa-lg" alt="success"></i></button><div id="lookup-status-container"><button class="btn" id="lookup-status"></button><span id="lookup-failure-message">Hmm...no results. Try again?</span>
-  </div>
+    <button class="btn btn-primary ml-2" id="lookupISBN" type="submit">Search <i class="fa fa-search fa-lg" alt="success"></i></button><div id="lookup-status-container"><button class="btn" id="lookup-status"></button><span id="lookup-failure-message">Hmm...no results. Try again?</span></div>
+
+  <% else %>
+    <div class="form-group">
+      <label for="edition_isbn13">ISBN13</label>    
+      <%= text_field(:edition, :isbn13, class: 'form-control', placeholder: '9780307739452', disabled: 'true') %>
+    </div>
+
+    <span class="ml-2 mr-2">OR</span>
+
+    <div class="form-group">
+      <label for="edition_isbn10">ISBN10</label>
+      <%= text_field(:edition, :isbn10, class: 'form-control', placeholder: '0307739457', disabled: 'true')  %>
+    </div>
+  <% end %>
 
 </div>

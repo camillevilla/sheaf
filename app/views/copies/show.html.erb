@@ -1,10 +1,23 @@
-<h2>Book Details</h2>
-<p>Owner: <%= @copy.owner.name %></p>
-<p><%= @edition.authors[0].name %></p>
-<p><%= @edition.work.title %></p>
-<p><%= @edition.publisher.name %></p>
-<p><%= @edition.publication_year %></p>
-<p><%= @edition.isbn13 %></p>
+<h2><%= @author.name %>, <em><%= @work.title %></em></h2>
+<p>Owner: <%= link_to @copy.owner.name, user_copies_path(@copy.owner) %></p>
+<p><%= @publisher.name %>, <%= @edition.publication_year %></p>
+<p>ISBN13: <%= @edition.isbn13 %> <% if !@edition.isbn10.empty? %>| ISBN10: <%= @edition.isbn10 %><% end %></p>
+<p><%= @copy.format.name %></p>
+<p>Acquired: <%= @copy.acquisition_date.strftime('%B %d, %Y') unless @copy.acquisition_date == nil %>
+<p><% if !@copy.url.empty? %>
+  <%= link_to 'Download', @copy.url, class: "btn btn-success", target: "_blank" %>
+  <% elsif @copy.requested?(current_user) %>
+    <button class="btn btn-warning btn-requested">Requested</button>
+  <% elsif @copy.loan_pending? %>
+    <%= link_to 'Review Request', loans_path, method: :get, class: "btn btn-warning" %>
+  <% elsif @copy.borrowed? %>
+    Borrowed
+  <% elsif @copy.owner != current_user && @copy.available?%>
+    <%= link_to 'Borrow', copy_loans_path(@copy), method: :post, class: "btn btn-primary btn-borrow" %>
+<% end %></p>
 
+<%= link_to 'Back', user_copies_path(@copy.owner), class: "btn btn-primary" %>
 
-<%= link_to "Back to #{@copy.owner.name}'s books", user_copies_path(@copy.owner) %>
+<%= link_to 'Edit', edit_user_copy_path(@copy), class: "btn btn-warning" %>
+
+<%= link_to 'Delete', user_copy_path(@copy), class: "btn btn-danger", method: :delete %>

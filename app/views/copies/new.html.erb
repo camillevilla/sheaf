@@ -1,6 +1,5 @@
 <h2>Add a Book</h2>
 
-
 <% if @copy.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@copy.errors.count, "error") %> prohibited this copy from being saved:</h2>
@@ -13,41 +12,4 @@
   </div>
 <% end %>
 
-
-<form id="new-copy-form" method="POST" action="/users/<%= current_user.id %>/copies">
-
-  <!-- ISBN lookups -->
-  <%= render "editions/isbns"%>
-  <!-- author -->
-  <%= render "authors/new"%>
-  <!-- title -->
-  <%= render "works/new"%>
-  <!-- publisher & publication year -->
-  <%= render "publishers/new"%>
-  <%= render "editions/new"%>
-
-  <div class="form-group">
-    <label for="copyFormat">Format</label>
-    <select class="form-control" name="copy[format_id]" id="copyFormat" class="form-control">
-      <% @formats.each do |format| %>
-        <option value="<%= format.id %>"><%= format.name %></option>
-      <% end %>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="copyUrl">Download URL</label>
-    <input type="text" name="copy[url]" id="editionUrl" class="form-control" placeholder="http://">
-    <small id="copyUrl" class="form-text text-muted">Add links to your private files (e.g. Dropbox, Google Drive) or public copies (e.g. archive.org, Project Gutenberg)</small>
-  </div>
-
-  <!-- acquisition date -->
-  <div class="form-group">
-    <label for="copyAcquisitionDate">Acquisition Date</label>
-    <input type="date" name="copy[acquisition_date]" id="copyAcquisitionDate" class="form-control" value="<%= Date.today.strftime('%Y-%m-%d') %>">
-  </div>
-  <button class="btn btn-primary" type="submit">Submit</button>
-  <button class="btn btn-secondary" type="reset">Reset</button>
-</form>
-
-<!-- link back to user's copies -->
+<%= render 'form', copy: @copy %>

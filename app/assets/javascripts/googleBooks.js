@@ -13,8 +13,8 @@ var searchButton = function () {
   $('#lookupISBN').on('click', function (event) {
     event.preventDefault()
     resetLookupStatus()
-    var isbn13 = $('#editionISBN13').val()
-    var isbn10 = $('#editionISBN10').val()
+    var isbn13 = $('#edition_isbn13').val()
+    var isbn10 = $('#edition_isbn10').val()
 
   // prevent search if both ISBN fields are empty
     if (isbn13 === '') {
@@ -33,10 +33,10 @@ var lookupByISBN = function (isbn) {
       if (data.totalItems >= 1) {
         var volumeInfo = data.items[0]['volumeInfo']
         console.log(volumeInfo)
-        $('#authorName').val(volumeInfo['authors'][0])
-        $('#workTitle').val(volumeInfo['title'])
-        $('#publisherName').val(volumeInfo['publisher'])
-        $('#editionPublicationyear').val(volumeInfo['publishedDate'])
+        $('#author_name').val(volumeInfo['authors'][0])
+        $('#work_title').val(volumeInfo['title'])
+        $('#publisher_name').val(volumeInfo['publisher'])
+        $('#edition_publication_year').val(volumeInfo['publishedDate'])
         $('#lookup-status').show()
         $('#lookup-status').addClass('btn-success')
         $('#lookup-status').html('<i class="fa fa-check fa-lg" alt="search successful"></i>')
