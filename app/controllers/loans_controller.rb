@@ -19,7 +19,7 @@ class LoansController < ApplicationController
   def create
     @loan = Loan.create(borrower: current_user, copy_id: params[:copy_id],status_code: 0)
 
-    redirect_to user_copies_path(@owner)
+    redirect_to user_copies_path(@loan.copy.owner)
   end
 
   def update
