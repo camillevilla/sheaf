@@ -2,25 +2,47 @@
   
   <%= render "editions/isbns"%>
 
-  <div class="form-group">
-    <%= label_tag(:author) %>
-    <%= text_field(:author, :name, class: 'form-control')  %>
-  </div>  
+  <% if params[:action] == 'edit' %>
+    <div class="form-group">
+      <%= label_tag(:author) %>
+      <%= text_field(:author, :name, class: 'form-control', disabled: 'true')  %>
+    </div>  
 
-  <div class="form-group">
-    <%= label_tag(:work, 'Title') %>
-    <%= text_field(:work, :title, class: 'form-control')  %>
-  </div>  
+    <div class="form-group">
+      <%= label_tag(:work, 'Title') %>
+      <%= text_field(:work, :title, class: 'form-control', disabled: 'true')  %>
+    </div>  
 
-  <div class="form-group">
-    <%= label_tag(:publisher, 'Publication') %>
-    <%= text_field(:publisher, :name, class: 'form-control') %>  
-  </div>
+    <div class="form-group">
+      <%= label_tag(:publisher, 'Publication') %>
+      <%= text_field(:publisher, :name, class: 'form-control', disabled: 'true') %>  
+    </div>
 
-  <div class="form-group">
-    <%= label_tag(:edition, 'Publication Year') %>
-    <%= text_field(:edition, :publication_year, class: 'form-control')  %>  
-  </div>
+    <div class="form-group">
+      <%= label_tag(:edition, 'Publication Year') %>
+      <%= text_field(:edition, :publication_year, class: 'form-control', disabled: 'true')  %>  
+    </div>
+  <% else %>
+    <div class="form-group">
+      <%= label_tag(:author) %>
+      <%= text_field(:author, :name, class: 'form-control')  %>
+    </div>  
+
+    <div class="form-group">
+      <%= label_tag(:work, 'Title') %>
+      <%= text_field(:work, :title, class: 'form-control')  %>
+    </div>  
+
+    <div class="form-group">
+      <%= label_tag(:publisher, 'Publication') %>
+      <%= text_field(:publisher, :name, class: 'form-control') %>  
+    </div>
+
+    <div class="form-group">
+      <%= label_tag(:edition, 'Publication Year') %>
+      <%= text_field(:edition, :publication_year, class: 'form-control')  %>  
+    </div>
+  <% end %>
 
   <div class="form-group">
     <%= f.label :url, 'Download URL'%>

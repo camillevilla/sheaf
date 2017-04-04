@@ -1,7 +1,7 @@
 class CopiesController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :set_copy, only: [:show, :edit, :update, :destroy]
-  before_action :set_metadata, only: [:show, :edit]
+  before_action :set_metadata, only: [:show, :edit, :update]
 
   def index
     @user = User.find(params[:user_id])
@@ -66,7 +66,14 @@ class CopiesController < ApplicationController
     else
       render :new
     end
+  end
 
+  def update
+    if @copy.update(copy_params)
+      redirect_to user_copy_path(@copy.owner, @copy)
+    else
+      render :edit
+    end
   end
 
   def show
