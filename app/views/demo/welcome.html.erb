@@ -8,7 +8,13 @@
     <div class="col-sm-6"><div class="card card-block"><%= link_to 'Your library', user_copies_path(current_user), class: "card-title" %><p class="card-text">Manage your collection</p></div></div>
     <div class="col-sm-6"><div class="card card-block"><%= link_to 'Friends', user_friendships_path(current_user), class: "card-title" %><p class="card-text">Explore your friends' libraries</p></div></div>
     <div class="col-sm-6"><div class="card card-block"><%= link_to 'Add friends', friendrequests_path, class: "card-title" %><p class="card-text">Invite friends to Sheaf</p></div></div>
-    <div class="col-sm-6"><div class="card card-block"><%= link_to 'Loans', loans_path, class: "card-title" %><p class="card-text">Books you're borrowing and lending</p></div></div>
+    <div class="col-sm-6"><div class="card card-block">
+    <% if current_user.pending_requests.length > 0 %>
+    <%= link_to "Loans <span class='notification-counter'>#{current_user.pending_requests.length}</span>".html_safe, loans_path, class: "card-title" %>
+    <% else %>
+      <%= link_to 'Loans', loans_path, class: "card-title" %>
+    <% end %>
+    <p class="card-text">Books you're borrowing and lending</p></div></div>
   </ul>
 
   <% else %>
