@@ -22,4 +22,9 @@ class User < ApplicationRecord
     validates :email, presence: true
     validates :phone, presence: true
     validates :encrypted_password, presence: true
+
+    # methods
+    def pending_requests
+      Loan.where(status_code:0).select{|a| a.owner.id == self.id}
+    end
 end

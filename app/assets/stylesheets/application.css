@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+.notification-counter {
+  background-color: red;
+  color: white;
+  border-radius: 2px;
+  padding: 5px;
+}
