@@ -29,13 +29,16 @@ class CopiesController < ApplicationController
   end
 
   def create
-    @author = Author.new(author_params)
-    if Author.where(name: @author.name).empty?
-      @author.save
-    end
-    @author = Author.where(name: @author.name)
+    @author = Author.find_or_create_by(author_params)
 
-    @work = Work.new(work_params.merge(author_id: @author[0].id))
+    # @author = Author.new(author_params)
+    # if Author.where(name: @author.name).empty?
+    #   @author.save
+    # end
+    # @author = Author.where(name: @author.name)
+
+    # @work = Work.new(work_params.merge(author_id: @author[0].id))
+    @work = Work.new(work_params.merge(author_id: @author.id))
     if Work.where(title: @work.title).empty?
       @work.save
     end
