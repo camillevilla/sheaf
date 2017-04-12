@@ -1,5 +1,6 @@
 $(document).on('turbolinks:load', function () {
   pendingRequestHandler()
+  returnLoanHandler()
 })
 
 var pendingRequestHandler = function () {
@@ -7,7 +8,6 @@ var pendingRequestHandler = function () {
     event.preventDefault()
     var clickedButton = $(this)
     var copyInfo = $(this).parent().parent()
-    console.log(clickedButton)
     var acceptButton = $(copyInfo).find('.btn-accept')
     var rejectButton = $(copyInfo).find('.btn-reject')
   
@@ -16,9 +16,7 @@ var pendingRequestHandler = function () {
     } else {
       $('.notification-counter').remove()
     }
-
-    console.log($('.notification-counter').html())
-
+    
     if ($(clickedButton).hasClass('btn-accept')) {
       $(rejectButton).parent().remove()
       $(acceptButton).hide()
@@ -33,4 +31,16 @@ var pendingRequestHandler = function () {
     }
 
   })
+}
+
+var returnLoanHandler = function (){
+ $('.btn-return').on('click', function(event) {
+  event.preventDefault()
+  var clickedButton = $(this)
+  var copyInfo = $(this).parent().parent()
+  console.log(copyInfo);
+  // on success: remove row
+  $(copyInfo).remove()
+  // on fail: console.log(Hmm...)
+ })
 }

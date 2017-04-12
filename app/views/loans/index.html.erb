@@ -19,7 +19,7 @@
     <td><%= loan.copy.edition.publisher.name %></td>
     <td><%= loan.copy.edition.publication_year %></td>
     <td><%= loan.copy.format.name %></td>
-    <td><%= link_to 'Return', loan, method: :delete %></td>
+    <td><%= link_to 'Return', loan, method: :delete, class: "btn btn-primary btn-return" %></td>
   </tr>
 <% end %>
 </table>
@@ -44,7 +44,7 @@
     <td><%= loan.copy.edition.publisher.name %></td>
     <td><%= loan.copy.edition.publication_year %></td>
     <td><%= loan.copy.format.name %></td>
-    <td><%= link_to 'Return', loan, method: :delete %></td>
+    <td><%= link_to 'Return', loan, method: :delete, class: "btn btn-primary btn-return" %></td>
   </tr>
 <% end %>
 </table>
