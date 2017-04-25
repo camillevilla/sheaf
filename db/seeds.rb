@@ -21,7 +21,7 @@ formats = Format.create([
   ])
 
 
-admin = 
+admin =
   User.new(
     name: "Camille",
     email: ENV['ADMIN_EMAIL'],
@@ -31,7 +31,7 @@ admin =
 
 admin.save
 
-tabby = 
+tabby =
   User.new(
     name: "Tabby",
     email: ENV['ADMIN_EMAIL2'],
@@ -40,5 +40,8 @@ tabby =
     )
 
 tabby.save
+
+FactoryGirl.create(:user)
+FactoryGirl.create(:user)
 
 Friendship.create(user_id: admin.id, friend_id: tabby.id)
