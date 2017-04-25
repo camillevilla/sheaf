@@ -29,38 +29,12 @@ class CopiesController < ApplicationController
   end
 
   def create
-    @author = Author.new(author_params)
-    if Author.where(name: @author.name).empty?
-      @author.save
-    end
-    @author = Author.where(name: @author.name)
-
-    @work = Work.new(work_params.merge(author_id: @author[0].id))
-    if Work.where(title: @work.title).empty?
-      @work.save
-    end
-    @work = Work.where(title: @work.title)[0]
-
-    @publisher = Publisher.new(publisher_params)
-    if Publisher.where(name: @publisher.name).empty?
-      @publisher.save
-    end
-    @publisher = Publisher.where(name: @publisher.name)
+    @author = Author.find_or_create_by(author_params)
+    @work = Work.find_or_create_by(work_params.merge(author_id: @author.id))
+    @publisher = Publisher.find_or_create_by(publisher_params)
+    @edition = Edition.find_or_create_by(edition_params.merge(work_id: @work.id, publisher_id: @publisher_id))
+    @copy = Copy.find_or_initialize_by(copy_params.merge(edition_id: @edition.id,user_id: current_user.id))
     
-    @edition = Edition.new(edition_params.merge(
-        work_id: @work.id,
-        publisher_id: @publisher[0].id
-      ))   
-    if Edition.where(work_id: @work.id, publisher_id: @publisher_id).empty?
-      @edition.save
-    else
-      @edition = Edition.where(work_id: @work.id, publisher_id: @publisher_id)[0]
-    end    
-
-    @copy = Copy.new(copy_params.merge(
-      edition_id: @edition.id,
-      user_id: current_user.id
-      ))
     if @copy.save
       redirect_to user_copy_path(current_user,@copy)
     else
