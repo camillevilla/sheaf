@@ -3,7 +3,7 @@ services:
 before_script:
 - psql -c 'create database sheaf_test;' -U postgres
 - RAILS_ENV=test bundle exec rake db:migrate
-- bundle exec rake db:seed
+- RAILS_ENV=test bundle exec rake db:seed
 script:
 - bundle exec rake rspec
 language: ruby
