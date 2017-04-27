@@ -15,6 +15,7 @@ gem 'simple_form'
 gem 'devise'
 gem 'postmark-rails'
 gem 'faker'
+gem 'httparty'
 
 group :development, :test do
   gem 'byebug', platform: :mri
